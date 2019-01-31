@@ -6,11 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="RestSharp" Version="106.6.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\ludo-web-api-ludo-get-it-too\src\WebAPI\WebAPI.csproj" />
+    <ProjectReference Include="..\LudoGameEngine\LudoGameEngine.csproj" />
   </ItemGroup>
-
 </Project>
