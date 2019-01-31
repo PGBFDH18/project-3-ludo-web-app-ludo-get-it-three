@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Authenticators;
 
-namespace WebMVC
+namespace WebApp
 {
     public class Call
     {
