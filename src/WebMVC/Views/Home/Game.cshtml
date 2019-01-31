@@ -65,7 +65,7 @@
                 <br>
                 <div id="errorMessage"></div>
                 <br>
-                <button onclick="newGame()" class="btn btn-primary rounded-pill">Lets play!</button>
+                <button class="btn btn-primary rounded-pill">Lets play!</button>
             </div>
         </div>
         <div id="boardDiv" class="p-5" style="display:none;">
@@ -167,19 +167,19 @@
                 <div class="B30"></div>
                 <div class="B31"></div>
                 <div class="B32"></div>
-                <div class="W11"></div>
-                <div class="W12"></div>
-                <div class="W13"></div>
-                <div class="WINNER"></div>
-                <div class="W21"></div>
-                <div class="W22"></div>
-                <div class="W23"></div>
-                <div class="W31"></div>
-                <div class="W32"></div>
-                <div class="W33"></div>
-                <div class="W41"></div>
-                <div class="W42"></div>
-                <div class="W43"></div>
+                <div class="W11"></div> <!-- Player 1, Position 1 -->
+                <div class="W12"></div> <!-- Player 1, Position 2 -->
+                <div class="W13"></div> <!-- Player 1, Position 3 -->
+                <div class="WINNER"></div> <!-- WINNER WINNER CHICKEN DINNER -->
+                <div class="W21"></div> <!-- Player 2, Position 1 -->
+                <div class="W22"></div> <!-- Player 2, Position 2 -->
+                <div class="W23"></div> <!-- Player 2, Position 3 -->
+                <div class="W31"></div> <!-- Player 3, Position 1 -->
+                <div class="W32"></div> <!-- Player 3, Position 2 -->
+                <div class="W33"></div> <!-- Player 3, Position 3 -->
+                <div class="W41"></div> <!-- Player 4, Position 1 -->
+                <div class="W42"></div> <!-- Player 4, Position 2 -->
+                <div class="W43"></div> <!-- Player 4, Position 3 -->
                 <div class="C21">
                     <div id="P0PG" class="player2">
                         <span class="fa-stack fa-lg">
@@ -245,9 +245,8 @@
                     </div>
                 </div>
             </div>
-            <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
+            <button>Roll Die</button>
             <p id="getRollNumber"></p>
-            <p id="getRollNumber2"></p>
         </div>
     </div>
 </section>
