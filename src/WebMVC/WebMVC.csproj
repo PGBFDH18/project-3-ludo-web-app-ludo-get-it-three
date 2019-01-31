@@ -9,8 +9,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\ludo-web-api-ludo-get-it-too\src\WebAPI\WebAPI.csproj" />
-  </ItemGroup>
-
 </Project>
