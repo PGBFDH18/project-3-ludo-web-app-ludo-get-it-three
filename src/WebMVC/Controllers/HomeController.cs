@@ -22,7 +22,7 @@ namespace WebMVC.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Game()
         {
             ViewData["Message"] = "Your contact page.";
 
@@ -30,6 +30,11 @@ namespace WebMVC.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Team()
         {
             return View();
         }

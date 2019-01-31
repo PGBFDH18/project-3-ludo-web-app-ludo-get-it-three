@@ -1,0 +1,253 @@
+﻿@{
+    ViewData["Title"] = "Game";
+}
+
+<!-- Content -->
+<header class="masthead p-5 text-center text-white">
+    <div class="masthead-content">
+        <div class="container">
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+
+<section>
+    <div class="container">
+        <div id="newDiv" class="align-items-center">
+            <div class="p-5 text-center m-auto">
+                <button onclick="showNewGame()" class="btn btn-secondary rounded-pill">New game</button>
+                <button onclick="showJoin()" class="btn btn-primary rounded-pill">Join an existing game</button>
+            </div>
+            <div id="showCode" class="p-5 text-center m-auto" style="display:none;">
+                <label>Code:</label>
+                <input class="search rounded-pill" id="gamecode">
+                <button onclick="joinGame()" class="btn btn-primary rounded-pill">Join</button>
+            </div>
+            <div id="showPlayers" class="p-5 text-center m-auto" style="display:none;">
+                <div class="player1">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <label>Player 1:</label>
+                    <input class="search rounded-pill" id="player1">
+                </div>
+                <br>
+                <div class="player2">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <label>Player 2:</label>
+                    <input class="search rounded-pill" id="player2">
+                </div>
+                <br>
+                <div class="player3">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <label>Player 3:</label>
+                    <input class="search rounded-pill" id="player3">
+                </div>
+                <br>
+                <div class="player4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <label>Player 4:</label>
+                    <input class="search rounded-pill" id="player4">
+                </div>
+                <br>
+                <div id="errorMessage"></div>
+                <br>
+                <button onclick="newGame()" class="btn btn-primary rounded-pill">Lets play!</button>
+            </div>
+        </div>
+        <div id="boardDiv" class="p-5" style="display:none;">
+            <div id="gameCode"></div>
+            <div class="grid-container">
+                <div class="C41">
+                    <div id="P0PY" class="player4">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C42">
+                    <div id="P1PY" class="player4">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C43">
+                    <div id="P2PY" class="player4">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C44">
+                    <div id="P3PY" class="player4">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C11">
+                    <div id="P0PR" class="player1">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C12">
+                    <div id="P1PR" class="player1">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C13">
+                    <div id="P2PR" class="player1">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C14">
+                    <div id="P3PR" class="player1">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="B1"></div>
+                <div class="B2"></div>
+                <div class="B3"></div>
+                <div class="B4"></div>
+                <div class="B5"></div>
+                <div class="B6"></div>
+                <div class="B7"></div>
+                <div class="B8"></div>
+                <div class="B9"></div>
+                <div class="B10"></div>
+                <div class="B11"></div>
+                <div class="B12"></div>
+                <div class="B13"></div>
+                <div class="B14"></div>
+                <div class="B15"></div>
+                <div class="B16"></div>
+                <div class="B17"></div>
+                <div class="B18"></div>
+                <div class="B19"></div>
+                <div class="B20"></div>
+                <div class="B21"></div>
+                <div class="B22"></div>
+                <div class="B23"></div>
+                <div class="B24"></div>
+                <div class="B25"></div>
+                <div class="B26"></div>
+                <div class="B27"></div>
+                <div class="B28"></div>
+                <div class="B29"></div>
+                <div class="B30"></div>
+                <div class="B31"></div>
+                <div class="B32"></div>
+                <div class="W11"></div>
+                <div class="W12"></div>
+                <div class="W13"></div>
+                <div class="WINNER"></div>
+                <div class="W21"></div>
+                <div class="W22"></div>
+                <div class="W23"></div>
+                <div class="W31"></div>
+                <div class="W32"></div>
+                <div class="W33"></div>
+                <div class="W41"></div>
+                <div class="W42"></div>
+                <div class="W43"></div>
+                <div class="C21">
+                    <div id="P0PG" class="player2">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C22">
+                    <div id="P1PG" class="player2">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C23">
+                    <div id="P2PG" class="player2">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C24">
+                    <div id="P3PG" class="player2">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C31">
+                    <div id="P0PB" class="player3">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C32">
+                    <div id="P1PB" class="player3">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C33">
+                    <div id="P2PB" class="player3">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="C34">
+                    <div id="P3PB" class="player3">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
+            <p id="getRollNumber"></p>
+            <p id="getRollNumber2"></p>
+        </div>
+    </div>
+</section>
