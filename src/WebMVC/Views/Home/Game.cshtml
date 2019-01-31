@@ -251,3 +251,22 @@
         </div>
     </div>
 </section>
+
+<script>
+    var showJoinBox = document.getElementById("showCode");
+    var showNewGameBox = document.getElementById("showPlayers");
+
+    function showJoin() {
+      if (showJoinBox.style.display === "none") {
+        showJoinBox.style.display = "block";
+        showNewGameBox.style.display = "none";
+      }
+    }
+
+    function showNewGame() {
+      if (showNewGameBox.style.display === "none") {
+        showNewGameBox.style.display = "block";
+        showJoinBox.style.display = "none";
+      }
+    }
+</script>
