@@ -8,7 +8,7 @@ namespace WebAppMVC.Controllers
 {
     public class LudoController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Home()
         {
             return View();
         }
