@@ -55,9 +55,10 @@ namespace WebAppMVC
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Ludo}/{action=Home}/{id?}");
+            routes.MapRoute(
+                    name: "Default", 
+                    template: "{controller}/{action}/{id}", 
+                    defaults: new { controller = "Ludo", action = "Home", id = "" });
             });
         }
     }
