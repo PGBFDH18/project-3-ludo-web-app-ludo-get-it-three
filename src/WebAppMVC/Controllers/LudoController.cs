@@ -22,5 +22,10 @@ namespace WebAppMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Lobby()
+        {
+            return View();
+        }
     }
 }
