@@ -1,29 +1,41 @@
-﻿
+﻿@model WebAppMVC.Models.GameInfo
 @{
     ViewData["Title"] = "Newgame";
     Layout = "_HomeLayout";
 }
 
 <div class="text-center">
-
+    
     <h1>Creategame!</h1>
     <textarea>Your Name</textarea>
     <button id="StartButton">LETS FUCKIN GO</button>
+    <p>@Context.User.Identity</p>
 </div>
 
 <script>
-    document.getElementById("StartButton").onclick = function ()
-    {
-        var http = new XMLHttpRequest();
-        var url = 'https://ludogame.azurewebsites.net/api/ludo/createnewgame';
-        http.open("POST", url);
-        http.send();
+    document.getElementById("StartButton").onclick = function () {
 
-        http.onreadystatechange = (e) => {
+        if (document.cookie != "") {
+            console.log("You already have a game running.");
 
-            // do something with game id
-            var gameId = http.response;
-            window.location.href = "lobby";
+            var gameId = document.cookie;
+            window.location.href = "lobby/" + gameId;
+        }
+        else {
+            var http = new XMLHttpRequest();
+            var url = 'https://ludogame.azurewebsites.net/api/ludo/createnewgame';
+
+            http.open("POST", url);
+            http.send();
+
+            http.onreadystatechange =(e)=> {
+
+                // do something with game id
+                var gameId = http.response;
+                document.cookie = gameId;
+
+                window.location.href = "lobby/" + gameId;
+            }
         }
     }
 </script>

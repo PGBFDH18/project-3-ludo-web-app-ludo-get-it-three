@@ -7,6 +7,6 @@ namespace WebAppMVC.Models
 {
     public class GameInfo
     {
-        public Guid Id { get; set; }
+        public Guid Id = new Guid();
     }
 }
