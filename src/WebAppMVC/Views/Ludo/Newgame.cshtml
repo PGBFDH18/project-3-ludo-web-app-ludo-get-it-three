@@ -1,4 +1,4 @@
-﻿@model WebAppMVC.Models.GameInfo
+﻿
 @{
     ViewData["Title"] = "Newgame";
     Layout = "_HomeLayout";
@@ -7,18 +7,16 @@
 <div class="text-center">
     
     <h1>Creategame!</h1>
-    <textarea>Your Name</textarea>
-    <button id="StartButton">LETS FUCKIN GO</button>
+    <textarea id="playerName">Your Name</textarea>
+    <button id="startButton">LETS FUCKIN GO</button>
+
 </div>
 
 <script>
-    document.getElementById("StartButton").onclick = function () {
+    document.getElementById("startButton").onclick = function () {
 
         if (document.cookie != "") {
             console.log("You already have a game running.");
-
-            var gameId = document.cookie;
-            window.location.href = "lobby/" + gameId;
         }
         else {
             var http = new XMLHttpRequest();
@@ -29,11 +27,11 @@
 
             http.onreadystatechange =(e)=> {
 
-                // do something with game id
                 var gameId = http.response;
-                document.cookie = gameId;
+                var playerName = document.getElementById("playerName").value;
 
-                window.location.href = "lobby/" + gameId;
+                document.cookie = "gameId=" + gameId;
+                document.cookie = "playerName=" + playerName;
             }
         }
     }

@@ -32,6 +32,7 @@ namespace WebAppMVC.Controllers
 
         public IActionResult Lobby()
         {
+
             return View();
         }
     }
