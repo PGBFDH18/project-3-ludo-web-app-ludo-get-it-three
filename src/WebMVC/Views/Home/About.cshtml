@@ -1,7 +1,31 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Om Spelet";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+@{ 
+    string[] outerlist = ViewData["Message"].ToString().Split("|");
+}
+
+<html>
+<body>
+    <ul>
+    @foreach (var x in outerlist)
+    {
+        string[] list = x.Split("*");
+        <h1>@list[0]</h1>
+        <ul style="list-style-type:square;">
+            @foreach (var y in list)
+            {
+                if (y == list[0]) { }
+                else
+                {
+                    <li>@y</li>
+                }
+            }
+        </ul>
+    }
+</body>
+</html>
+
+<p>Ha så kul</p>

@@ -17,7 +17,7 @@ namespace WebApp.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "förberedelse * starta ett spel * lägg till spelare * förbered er på skoj |regler * kasta tärning * woop |spelets slut * Spelet är slut då en spelare har lett alla sina pjäser in i mål";
 
             return View();
         }
