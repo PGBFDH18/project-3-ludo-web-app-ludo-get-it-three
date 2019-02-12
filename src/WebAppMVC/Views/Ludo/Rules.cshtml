@@ -1,0 +1,29 @@
+﻿@using System.IO;
+
+@{
+    ViewData["Title"] = "Rules";
+    Layout = "_HomeLayout";
+}
+<html>
+<body>
+
+<h1>@ViewData["Title"]</h1>
+
+@{
+    string[] outerlist = File.ReadAllLines("rules.csv"); // sökväg //C:\Program Files\IIS Express\rules.csv, wtf mate!
+}
+
+@foreach (var x in outerlist)
+{
+    string[] list = x.Split("*");
+    <h2>@list[0]</h2>
+    <ul style="list-style-type:square;">
+        @foreach (var y in list)
+        {
+            if (y == list[0]) { }
+            else { <li>@y</li> }
+        }
+    </ul>
+}
+</body>
+</html>

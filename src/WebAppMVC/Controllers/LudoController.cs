@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace WebAppMVC.Controllers
 {
@@ -19,6 +20,11 @@ namespace WebAppMVC.Controllers
         }
 
         public IActionResult JoinGame()
+        {
+            return View();
+        }
+
+        public IActionResult Rules()
         {
             return View();
         }
