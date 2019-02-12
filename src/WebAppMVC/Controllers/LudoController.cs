@@ -10,13 +10,6 @@ namespace WebAppMVC.Controllers
 {
     public class LudoController : Controller
     {
-        GameInfo gameInfo;
-
-        public LudoController(GameInfo _gameInfo)
-        {
-            gameInfo = _gameInfo;
-        }
-
         public IActionResult Home()
         {
             return View();
