@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebAppMVC.Models;
+using RestSharp;
 
 namespace WebAppMVC
 {
@@ -32,6 +33,8 @@ namespace WebAppMVC
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+
+            services.AddTransient<IRestClient, RestClient>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

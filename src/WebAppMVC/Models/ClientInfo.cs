@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebAppMVC.Models
 {
-    public class GameInfo
+    public class ClientInfo
     {
-        public Guid Id = new Guid();
+        public string Name { get; set; }
+        public Guid gameId = new Guid();
     }
 }
