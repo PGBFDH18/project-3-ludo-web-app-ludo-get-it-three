@@ -3,27 +3,37 @@
 @{
     ViewData["Title"] = "Rules";
     Layout = "_HomeLayout";
+    ViewData["Message"] = "Preparation * Click \"Start new game\" * Add 2 to 4 players * Press \"Start Game\" |One turn:" +
+        "*A player throws the die(we will tell you who) *The player moves one piece, if possible * A piece in (Hemmafållan)" +
+        " can only be moved if the die shows 6 * A piece in play can be moved whenever* A piece in (målfållan) can be moved" +
+        " whenever, but can only enter goal if the number of steps left is equal to the number on the die. Otherwise it will" +
+        " bounce *KNUFFREGELN.* If the die shows 6, the player gets another turn. |End game *The winner is the player who " +
+        "first enters all of their pieces into goal. |Have fun!";
 }
 <html>
 <body>
 
-<h1>@ViewData["Title"]</h1>
+    <h1>@ViewData["Title"]</h1>
 
-@{
-    string[] outerlist = File.ReadAllLines("rules.csv"); // sökväg //C:\Program Files\IIS Express\rules.csv, wtf mate!
-}
 
-@foreach (var x in outerlist)
-{
-    string[] list = x.Split("*");
-    <h2>@list[0]</h2>
-    <ul style="list-style-type:square;">
-        @foreach (var y in list)
-        {
-            if (y == list[0]) { }
-            else { <li>@y</li> }
-        }
-    </ul>
-}
+    @{
+        string[] outerlist = ViewData["Message"].ToString().Split("|");
+    }
+
+
+    @foreach (var x in outerlist)
+    {
+        string[] list = x.Split("*");
+        <h2>@list[0]</h2>
+        <ul style="list-style-type:square;">
+            @foreach (var y in list)
+            {
+                if (y == list[0]) { }
+                else
+                {
+                    <li>@y</li>}
+            }
+        </ul>
+    }
 </body>
 </html>
