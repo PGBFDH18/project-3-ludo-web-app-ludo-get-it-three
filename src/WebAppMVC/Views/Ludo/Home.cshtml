@@ -1,22 +1,21 @@
-﻿@model WebAppMVC.Models.ClientInfo
+﻿
 @{
     ViewData["Title"] = "Index";
     Layout = "_HomeLayout";
 }
 
-<h1>Home</h1>
-<p>
-    Ludo is a strategy board game for two to four[a] players, in which<br />
-    the players race their four tokens from start to finish according to<br />
-    the rolls of a single die. Like other cross and circle games, Ludo is<br />
-    derived from the Indian game Pachisi, but simpler. The game and its<br />
-    variations are popular in many countries and under various names.<br />
-</p>
-
-<form asp-action="Newgame" asp-controller="Ludo">
-    <div>
-        <label asp-for="Name"></label>
-        <textarea id="playerName" asp-for="Name">Please enter your name</textarea>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <div class="home">
+        <h1>Home</h1>
+        <p>
+            Ludo is a strategy board game for two to four players, in which
+            the players race their four tokens from start to finish according to
+            the rolls of a single die. Like other cross and circle games, Ludo is
+            derived from the Indian game Pachisi, but simpler. The game and its
+            variations are popular in many countries and under various names.
+        </p>
     </div>
-    <input id="newGameButton" type="submit" class="button" value="New Game"/>
-</form>
+</body>

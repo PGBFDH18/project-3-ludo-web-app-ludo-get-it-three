@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace WebAppMVC.Models
 {
-    public class ClientInfo
+    public enum PlayerColor
     {
-        public string Name { get; set; }
-        public Guid gameId = new Guid();
+        Red = 0,
+        Green = 1,
+        Blue = 2,
+        Yellow = 3
     }
 }
