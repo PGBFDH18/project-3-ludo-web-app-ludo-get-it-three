@@ -9,6 +9,7 @@ namespace WebAppMVC.Models
     {
         private Guid gameId = new Guid();
         public Guid GameId { get => gameId; set => gameId = value; }
+        public int PlayerId { get; set; }
         public string PlayerName { get; set; }
         public string PlayerColor { get; set; }
     }

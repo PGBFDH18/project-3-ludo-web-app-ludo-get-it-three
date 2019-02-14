@@ -1,4 +1,4 @@
-﻿@model WebAppMVC.Models.CreateGameModel;
+﻿
 @{
     ViewData["Title"] = "Lobby";
     Layout = "_HomeLayout";
@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Lobby</h1>
-    <p id="Playername">@Model.PlayerName</p>
-    <p id="Playercolor">@Model.PlayerColor</p>
-    <p id="GameID">@Model.GameId</p>
+    <p>Game ID: @ViewBag.gameid</p>
+    <p>Player: @ViewBag.playername</p>
+    
 </body>

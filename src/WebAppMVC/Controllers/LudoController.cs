@@ -38,10 +38,6 @@ namespace WebAppMVC.Controllers
 
         public IActionResult NewGame()
         {
-            //var request = new RestRequest("api/ludo/createnewgame", Method.POST);
-            //IRestResponse<Guid> response = client.Execute<Guid>(request);
-            //info.gameId = Guid.Parse(response.Data.ToString());
-            
             return View();
         }
 
@@ -49,17 +45,25 @@ namespace WebAppMVC.Controllers
         {
             // Create game
             var request = new RestRequest("api/ludo/createnewgame", Method.POST);
-            IRestResponse<Guid> response = client.Execute<Guid>(request);
-            model.GameId = Guid.Parse(response.Data.ToString());
+            IRestResponse<Guid> createGameResponse = client.Execute<Guid>(request);
+            model.GameId = Guid.Parse(createGameResponse.Data.ToString());
 
-            
             // Add player that created game
             request = new RestRequest($"api/ludo/{model.GameId}/players/addplayer", Method.POST);
             request.AddParameter(new Parameter("name", model.PlayerName, ParameterType.QueryString));
             request.AddParameter(new Parameter("colorID", int.Parse(model.PlayerColor), ParameterType.QueryString));
-            client.Execute<PlayerModel>(request);
+            IRestResponse<PlayerModel> addPlayerResponse = client.Execute<PlayerModel>(request);
+            model.PlayerId = addPlayerResponse.Data.PlayerId;
 
-            return RedirectToAction("Lobby", model);
+            // Set cookies
+            CookieOptions cookie = new CookieOptions();
+            cookie.Expires = DateTime.Now.AddHours(1);
+            Response.Cookies.Append("gameid", model.GameId.ToString(), cookie);
+            Response.Cookies.Append("playercolorid", model.PlayerColor, cookie);
+            Response.Cookies.Append("playerid", model.PlayerId.ToString(), cookie);
+            Response.Cookies.Append("playername", model.PlayerName, cookie);
+
+            return RedirectToAction("Lobby");
         }
 
         public IActionResult Rules()
@@ -67,9 +71,22 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
-        public IActionResult Lobby(CreateGameModel model)
+        public IActionResult Lobby()
         {
-            return View(model);
+            //var gameId = Request.Cookies["gameid"].ToString();
+            //ViewBag.gameid = Request.Cookies["gameid"].ToString();
+
+            //var request = new RestRequest($"api/ludo/{gameId}/players/getplayers", Method.GET);
+            //IRestResponse<PlayerModelContainer> getAllPlayersResponse = client.Execute<PlayerModelContainer>(request);
+            if(Request.Cookies["gameid"] == null)
+            {
+                return View();
+            }
+            
+            ViewBag.gameid = Request.Cookies["gameid"].ToString();
+            ViewBag.playername = Request.Cookies["playername"].ToString();
+
+            return View();
         }
     }
 }
