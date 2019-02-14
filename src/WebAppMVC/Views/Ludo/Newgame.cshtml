@@ -1,4 +1,4 @@
-﻿
+﻿@model ClientInfo
 @{
     ViewData["Title"] = "Newgame";
     Layout = "_HomeLayout";
@@ -6,24 +6,8 @@
 
 <div class="text-center">
 
-    <h1>Creategame!</h1>
-    <textarea>Your Name</textarea>
-    <button id="StartButton">LETS FUCKIN GO</button>
+    <p id="GameId:">@Model.gameId</p>
+    
+    <p id="PlayerName">@Model.Name</p>
+
 </div>
-
-<script>
-    document.getElementById("StartButton").onclick = function ()
-    {
-        var http = new XMLHttpRequest();
-        var url = 'https://ludogame.azurewebsites.net/api/ludo/createnewgame';
-        http.open("POST", url);
-        http.send();
-
-        http.onreadystatechange = (e) => {
-
-            // do something with game id
-            var gameId = http.response;
-            window.location.href = "lobby";
-        }
-    }
-</script>

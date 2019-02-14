@@ -1,4 +1,4 @@
-﻿
+﻿@model WebAppMVC.Models.ClientInfo
 @{
     ViewData["Title"] = "Index";
     Layout = "_HomeLayout";
@@ -12,3 +12,11 @@
     derived from the Indian game Pachisi, but simpler. The game and its<br />
     variations are popular in many countries and under various names.<br />
 </p>
+
+<form asp-action="Newgame" asp-controller="Ludo">
+    <div>
+        <label asp-for="Name"></label>
+        <textarea id="playerName" asp-for="Name">Please enter your name</textarea>
+    </div>
+    <input id="newGameButton" type="submit" class="button" value="New Game"/>
+</form>
