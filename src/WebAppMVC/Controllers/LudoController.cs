@@ -26,19 +26,34 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
-        public IActionResult NewGame(ClientInfo info)
+        public IActionResult NewGame()
         {
-            var request = new RestRequest("api/ludo/createnewgame", Method.POST);
-            IRestResponse<Guid> response = client.Execute<Guid>(request);
-            info.gameId = Guid.Parse(response.Data.ToString());
+            //var request = new RestRequest("api/ludo/createnewgame", Method.POST);
+            //IRestResponse<Guid> response = client.Execute<Guid>(request);
+            //info.gameId = Guid.Parse(response.Data.ToString());
             
-            return View(info);
+            return View();
         }
 
-        public IActionResult JoinGame(ClientInfo info)
+        public IActionResult CreateGame(CreateGameModel model)
         {
+            // Create game
+            var request = new RestRequest("api/ludo/createnewgame", Method.POST);
+            IRestResponse<Guid> response = client.Execute<Guid>(request);
+            model.GameId = Guid.Parse(response.Data.ToString());
 
+            
+            // Add player that created game
+            request = new RestRequest($"api/ludo/{model.GameId}/players/addplayer", Method.POST);
+            request.AddParameter(new Parameter("name", model.PlayerName, ParameterType.QueryString));
+            request.AddParameter(new Parameter("colorID", int.Parse(model.PlayerColor), ParameterType.QueryString));
+            client.Execute<PlayerModel>(request);
 
+            return RedirectToAction("Lobby", model);
+        }
+
+        public IActionResult JoinGame()
+        {
             return View();
         }
 
@@ -47,9 +62,9 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
-        public IActionResult Lobby()
+        public IActionResult Lobby(CreateGameModel model)
         {
-            return View();
+            return View(model);
         }
     }
 }

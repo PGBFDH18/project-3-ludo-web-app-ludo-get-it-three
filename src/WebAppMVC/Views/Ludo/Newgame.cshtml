@@ -1,13 +1,33 @@
-﻿@model ClientInfo
+﻿@model WebAppMVC.Models.CreateGameModel
 @{
     ViewData["Title"] = "Newgame";
     Layout = "_HomeLayout";
 }
 
-<div class="text-center">
+<head>
+    <title>New game</title>
+</head>
+<body>
+    <div class="text-center">
+        <p>this is a test</p>
 
-    <p id="GameId:">@Model.gameId</p>
-    
-    <p id="PlayerName">@Model.Name</p>
 
-</div>
+        <form asp-action="CreateGame" asp-controller="Ludo">
+            <div>
+                <label asp-for="PlayerName"></label>
+                <input asp-for="PlayerName" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+
+                <label asp-for="PlayerColor"></label>
+                <select asp-for="PlayerColor">
+                    <option value="0">Red</option>
+                    <option value="1">Green</option>
+                    <option value="2">Blue</option>
+                    <option value="3">Yellow</option>
+                </select>
+            </div>
+            <input id="newGameButton" type="submit" class="button" value="New Game" />
+        </form>
+    </div>
+</body>

@@ -1,9 +1,15 @@
-﻿@model WebAppMVC.Models.ClientInfo;
+﻿@model WebAppMVC.Models.CreateGameModel;
 @{
     ViewData["Title"] = "Lobby";
     Layout = "_HomeLayout";
 }
 
-<h1>Lobby</h1>
-<p>Game ID: @Model.gameId</p>
-<p>Player name: @Model.gameId</p>
+<head>
+    <title>Lobby</title>
+</head>
+<body>
+    <h1>Lobby</h1>
+    <p id="Playername">@Model.PlayerName</p>
+    <p id="Playercolor">@Model.PlayerColor</p>
+    <p id="GameID">@Model.GameId</p>
+</body>

@@ -2,6 +2,11 @@
     font-family: sans-serif;
 }
 
+#navbody {
+    margin: 0px;
+    padding: 0px;
+}
+
 #navbar ul {
     list-style-type: none;
     overflow: hidden;
@@ -22,4 +27,12 @@
 #navbar li a:hover {
     background-color: black;
     color: white;
+}
+
+.home {
+    width: 400px;
+}
+
+.home p {
+    text-align: left;
 }
