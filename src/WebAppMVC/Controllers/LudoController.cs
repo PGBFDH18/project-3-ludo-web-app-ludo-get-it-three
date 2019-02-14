@@ -62,15 +62,6 @@ namespace WebAppMVC.Controllers
             return RedirectToAction("Lobby", model);
         }
 
-        public IActionResult NewGame(ClientInfo info)
-        {
-            var request = new RestRequest("api/ludo/createnewgame", Method.POST);
-            IRestResponse<Guid> response = client.Execute<Guid>(request);
-            info.gameId = Guid.Parse(response.Data.ToString());
-
-            return View(info);
-        }
-
         public IActionResult Rules()
         {
             return View();
