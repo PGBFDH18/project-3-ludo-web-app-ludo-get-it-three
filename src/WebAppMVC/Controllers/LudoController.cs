@@ -21,26 +21,6 @@ namespace WebAppMVC.Controllers
             client.BaseUrl = new Uri("https://ludogame.azurewebsites.net");
         }
 
-        public IActionResult Home()
-        {
-            return View();
-        }
-
-        public async Task<IActionResult> JoinGame(CreateGameModel model)
-        {
-            var response = new RestRequest("api/ludo/getallgames", Method.GET);
-            var restResponse = await client.ExecuteTaskAsync(response);
-            var allGames = Game.FromJson(restResponse.Content);
-            GameList output = new GameList() { AllGames = allGames };
-
-            return View(output);
-        }
-
-        public IActionResult NewGame()
-        {
-            return View();
-        }
-
         public IActionResult CreateGame(CreateGameModel model)
         {
             // Create game
@@ -66,9 +46,19 @@ namespace WebAppMVC.Controllers
             return RedirectToAction("Lobby");
         }
 
-        public IActionResult Rules()
+        public IActionResult Home()
         {
             return View();
+        }
+
+        public async Task<IActionResult> JoinGame(CreateGameModel model)
+        {
+            var response = new RestRequest("api/ludo/getallgames", Method.GET);
+            var restResponse = await client.ExecuteTaskAsync(response);
+            var allGames = Game.FromJson(restResponse.Content);
+            GameList output = new GameList() { AllGames = allGames };
+
+            return View(output);
         }
 
         public IActionResult Lobby()
@@ -78,14 +68,24 @@ namespace WebAppMVC.Controllers
 
             //var request = new RestRequest($"api/ludo/{gameId}/players/getplayers", Method.GET);
             //IRestResponse<PlayerModelContainer> getAllPlayersResponse = client.Execute<PlayerModelContainer>(request);
-            if(Request.Cookies["gameid"] == null)
+            if (Request.Cookies["gameid"] == null)
             {
                 return View();
             }
-            
+
             ViewBag.gameid = Request.Cookies["gameid"].ToString();
             ViewBag.playername = Request.Cookies["playername"].ToString();
 
+            return View();
+        }
+
+        public IActionResult NewGame()
+        {
+            return View();
+        }
+
+        public IActionResult Rules()
+        {
             return View();
         }
     }
