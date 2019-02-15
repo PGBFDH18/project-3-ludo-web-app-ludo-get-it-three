@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WebAppMVC.Models
 {
@@ -10,7 +11,7 @@ namespace WebAppMVC.Models
         public int PlayerId { get; set; }
         public string Name { get; set; }
         public PlayerColor PlayerColor;
-        public IEnumerable<PieceModel> Pieces { get; set; }
+        public List<PieceModel> Pieces { get; set; }
         public int Offset
         {
             get

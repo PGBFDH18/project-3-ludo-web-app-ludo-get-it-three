@@ -1,4 +1,4 @@
-﻿
+﻿@model WebAppMVC.Models.PlayerModelContainer
 @{
     ViewData["Title"] = "Lobby";
     Layout = "_HomeLayout";
@@ -9,7 +9,16 @@
 </head>
 <body>
     <h1>Lobby</h1>
-    <p>Game ID: @ViewBag.gameid</p>
-    <p>Player: @ViewBag.playername</p>
-    
+    @if (ViewBag.message != null)
+    {
+        <p>@ViewBag.message</p>
+    }
+    else
+    {
+        <h5>Players in game: @ViewBag.gameid</h5>
+        foreach(PlayerModel player in Model.Players)
+        {
+            <p>@player.Name</p>
+        }
+    }
 </body>

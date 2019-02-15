@@ -63,20 +63,26 @@ namespace WebAppMVC.Controllers
 
         public IActionResult Lobby()
         {
-            //var gameId = Request.Cookies["gameid"].ToString();
-            //ViewBag.gameid = Request.Cookies["gameid"].ToString();
-
-            //var request = new RestRequest($"api/ludo/{gameId}/players/getplayers", Method.GET);
-            //IRestResponse<PlayerModelContainer> getAllPlayersResponse = client.Execute<PlayerModelContainer>(request);
             if (Request.Cookies["gameid"] == null)
             {
+                ViewBag.message = "You are currently not assigned to a game.";
                 return View();
             }
 
-            ViewBag.gameid = Request.Cookies["gameid"].ToString();
-            ViewBag.playername = Request.Cookies["playername"].ToString();
+            // Get the cookie that represents which game the user is playing
+            var gameId = Request.Cookies["gameid"].ToString();
+            ViewBag.gameid = gameId;
 
-            return View();
+            // Get players for the game and deserialize them
+            var request = new RestRequest($"api/ludo/{gameId}/players/getplayers", Method.GET);
+            IRestResponse getAllPlayersResponse = client.Execute(request);
+            PlayerModel[] deserializedPlayers = JsonConvert.DeserializeObject<PlayerModel[]>(getAllPlayersResponse.Content);
+            PlayerModelContainer model = new PlayerModelContainer
+            {
+                Players = deserializedPlayers
+            }; 
+
+            return View(model);
         }
 
         public IActionResult NewGame()
