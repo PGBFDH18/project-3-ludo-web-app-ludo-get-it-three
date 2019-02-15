@@ -1,5 +1,72 @@
 ﻿@{
     ViewData["Title"] = "Controlpanel";
 }
+<head>
+    <style>
+        [class*="killbutton"] {
+            line-height: 90px;
+            font-size: 50px;
+            font-family: Raleway;
+            margin-top: 55px;
+            background-color: #ff0066;
+            border-radius: 100px;
+            padding: 0;
+            left: 50%;
+            margin-left: -60px;
+            border-bottom: 30px solid #990033;
+            position: absolute;
+            width: 120px;
+            height: 85px;
+            transition: 0.5s;
+            text-align: center;
+        }
+
+        .killbutton:active {
+            margin-top: 85px;
+            border-bottom: 0px solid black;
+            transition: 0.25s;
+            /* animation: chaos 1s; */
+        }
+
+        .killbutton a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .killbutton1 {
+            background-color: Gainsboro;
+            width: 150px;
+            height: 100px;
+            border-bottom: 20px solid Grey;
+            z-index: -1;
+            left: 50%;
+            margin-left: -75px;
+            margin-top: 75px;
+            animation: null 1s;
+        }
+    </style>
+</head>
+
 <h1>Wellcome @ViewBag.User !</h1>
-<h2>Controlpanel</h2>
+<h3>Delete All Games :3 </h3>
+<div class="killbutton" onClick="playAudio()"> <a style="color: #ff0066;"> </a> </div>
+<div class="killbutton1"</div>
+<div style="width:50%;">
+    <canvas id="canvas"></canvas>
+</div>
+
+<audio id="myAudio">
+    <source src="~/Resources/Audio/fuck.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    var x = document.getElementById("myAudio");
+
+    function playAudio() {
+        x.play();
+    }
+
+    function pauseAudio() {
+        x.pause();
+    }
+</script>
