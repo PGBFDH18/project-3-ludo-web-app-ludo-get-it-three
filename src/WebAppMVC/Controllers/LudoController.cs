@@ -31,6 +31,55 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
+        public async Task<IActionResult> JoinGame()
+        {
+            //var response = new RestRequest("api/ludo/getallgames", Method.GET);
+            //var restResponse = await client.ExecuteTaskAsync(response);
+            //var allGames = Game.FromJson(restResponse.Content);
+            //GameList output = new GameList() { AllGames = allGames };
+
+            return View(/*output*/);
+        }
+
+        public IActionResult Rules()
+        {
+            return View();
+        }
+
+        public IActionResult Lobby()
+        {
+            if (Request.Cookies["gameid"] == null)
+            {
+                ViewBag.message = "You are currently not assigned to a game.";
+                return View();
+            }
+
+            // Get the cookie that represents which game the user is playing
+            var gameId = Request.Cookies["gameid"].ToString();
+            ViewBag.gameid = gameId;
+
+            // Get players for the game and deserialize them
+            var request = new RestRequest($"api/ludo/{gameId}/players/getplayers", Method.GET);
+            IRestResponse getAllPlayersResponse = client.Execute(request);
+            PlayerModel[] deserializedPlayers = JsonConvert.DeserializeObject<PlayerModel[]>(getAllPlayersResponse.Content);
+            PlayerModelContainer model = new PlayerModelContainer
+            {
+                Players = deserializedPlayers
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Game()
+        {
+            var gameId = Request.Cookies["gameid"].ToString();
+            var request = new RestRequest($"api/ludo/{gameId}/getgamedetails", Method.GET);
+            IRestResponse<GameModel> getGameResponse = client.Execute<GameModel>(request);
+
+            return View(getGameResponse.Data);
+        }
+
+
         public IActionResult CreateGame(CreateGameModel model)
         {
             // Create game
@@ -57,16 +106,6 @@ namespace WebAppMVC.Controllers
             return RedirectToAction("Lobby");
         }
 
-        public async Task<IActionResult> JoinGame()
-        {
-            //var response = new RestRequest("api/ludo/getallgames", Method.GET);
-            //var restResponse = await client.ExecuteTaskAsync(response);
-            //var allGames = Game.FromJson(restResponse.Content);
-            //GameList output = new GameList() { AllGames = allGames };
-
-            return View(/*output*/);
-        }
-
         public IActionResult SelectGame(CreateGameModel model)
         {
             // Duplicate code, refactor?
@@ -87,35 +126,22 @@ namespace WebAppMVC.Controllers
             return RedirectToAction("Lobby");
         }
 
-        public IActionResult Lobby()
+        public IActionResult StartGame()
         {
-            if (Request.Cookies["gameid"] == null)
-            {
-                ViewBag.message = "You are currently not assigned to a game.";
-                return View();
-            }
-
-            // Get the cookie that represents which game the user is playing
             var gameId = Request.Cookies["gameid"].ToString();
-            ViewBag.gameid = gameId;
+            var request = new RestRequest($"api/ludo/{gameId}/startgame", Method.PUT);
+            IRestResponse<bool> startGameResponse = client.Execute<bool>(request);
+            bool startGameSuccess = startGameResponse.Data;
 
-            // Get players for the game and deserialize them
-            var request = new RestRequest($"api/ludo/{gameId}/players/getplayers", Method.GET);
-            IRestResponse getAllPlayersResponse = client.Execute(request);
-            PlayerModel[] deserializedPlayers = JsonConvert.DeserializeObject<PlayerModel[]>(getAllPlayersResponse.Content);
-            PlayerModelContainer model = new PlayerModelContainer
+            if(startGameSuccess)
             {
-                Players = deserializedPlayers
-            }; 
-
-            return View(model);
-        }
-
-        
-
-        public IActionResult Rules()
-        {
-            return View();
+                return RedirectToAction("Game");
+            }
+            else
+            {
+                ViewBag.errorMessage = "Couldn't start game.";
+                return RedirectToAction("Lobby");
+            }
         }
     }
 }

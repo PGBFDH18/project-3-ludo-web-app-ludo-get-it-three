@@ -9,16 +9,25 @@
 </head>
 <body>
     <h1>Lobby</h1>
+    @if (ViewBag.errorMessage != null)
+    {
+        <p>@ViewBag.errorMessage</p>
+    }
+
     @if (ViewBag.message != null)
     {
         <p>@ViewBag.message</p>
     }
     else
     {
-        <h5>Players in game: @ViewBag.gameid</h5>
+        <h4>Game ID: @ViewBag.gameid</h4>
+        <h5>Players</h5>
         foreach(PlayerModel player in Model.Players)
         {
             <p>@player.Name</p>
         }
+        <form asp-action="StartGame" asp-controller="Ludo">
+            <button type="submit">Start Game</button>
+        </form>
     }
 </body>
