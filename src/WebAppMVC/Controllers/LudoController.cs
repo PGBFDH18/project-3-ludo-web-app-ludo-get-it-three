@@ -118,16 +118,5 @@ namespace WebAppMVC.Controllers
                 return View("Lobby", new PlayerModelContainer { gameId = gameId ,Players = ApiMethods.GetAllPlayers(gameId, client)});
             }
         }
-
-        public IActionResult RollDice()
-        {
-            // Move this to api methods
-            var gameId = Request.Cookies["gameid"].ToString();
-            var request = new RestRequest($"api/ludo/{gameId}/rolldice");
-            IRestResponse<int> rollDiceResponse = client.Execute<int>(request);
-
-
-            return View("Game");
-        }
     }
 }
