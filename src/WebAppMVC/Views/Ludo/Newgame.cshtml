@@ -9,8 +9,6 @@
 </head>
 <body>
     <div class="text-center">
-        <p>this is a test</p>
-
 
         <form asp-action="CreateGame" asp-controller="Ludo">
             <div>
@@ -18,7 +16,6 @@
                 <input asp-for="PlayerName" type="text" placeholder="Please enter your name" />
             </div>
             <div>
-
                 <label asp-for="PlayerColor"></label>
                 <select asp-for="PlayerColor">
                     <option value="0">Red</option>
@@ -27,7 +24,7 @@
                     <option value="3">Yellow</option>
                 </select>
             </div>
-            <input id="newGameButton" type="submit" class="button" value="New Game" />
+            <input type="submit" value="New Game" />
         </form>
     </div>
 </body>

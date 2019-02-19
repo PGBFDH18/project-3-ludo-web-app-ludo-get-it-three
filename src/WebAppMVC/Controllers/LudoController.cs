@@ -21,44 +21,29 @@ namespace WebAppMVC.Controllers
             client.BaseUrl = new Uri("https://ludogame.azurewebsites.net");
         }
 
-        public IActionResult CreateGame(CreateGameModel model)
-        {
-            // Create game
-            var request = new RestRequest("api/ludo/createnewgame", Method.POST);
-            IRestResponse<Guid> createGameResponse = client.Execute<Guid>(request);
-            model.GameId = Guid.Parse(createGameResponse.Data.ToString());
-
-            // Add player that created game
-            request = new RestRequest($"api/ludo/{model.GameId}/players/addplayer", Method.POST);
-            request.AddParameter(new Parameter("name", model.PlayerName, ParameterType.QueryString));
-            request.AddParameter(new Parameter("colorID", int.Parse(model.PlayerColor), ParameterType.QueryString));
-            IRestResponse<PlayerModel> addPlayerResponse = client.Execute<PlayerModel>(request);
-            model.PlayerId = addPlayerResponse.Data.PlayerId;
-
-            // Set cookies
-            CookieOptions cookie = new CookieOptions();
-            cookie.Expires = DateTime.Now.AddHours(1);
-            Response.Cookies.Append("gameid", model.GameId.ToString(), cookie);
-            Response.Cookies.Append("playercolorid", model.PlayerColor, cookie);
-            Response.Cookies.Append("playerid", model.PlayerId.ToString(), cookie);
-            Response.Cookies.Append("playername", model.PlayerName, cookie);
-
-            return RedirectToAction("Lobby");
-        }
-
         public IActionResult Home()
         {
             return View();
         }
 
-        public async Task<IActionResult> JoinGame(CreateGameModel model)
+        public IActionResult NewGame()
         {
-            var response = new RestRequest("api/ludo/getallgames", Method.GET);
-            var restResponse = await client.ExecuteTaskAsync(response);
-            var allGames = Game.FromJson(restResponse.Content);
-            GameList output = new GameList() { AllGames = allGames };
+            return View();
+        }
 
-            return View(output);
+        public async Task<IActionResult> JoinGame()
+        {
+            //var response = new RestRequest("api/ludo/getallgames", Method.GET);
+            //var restResponse = await client.ExecuteTaskAsync(response);
+            //var allGames = Game.FromJson(restResponse.Content);
+            //GameList output = new GameList() { AllGames = allGames };
+
+            return View(/*output*/);
+        }
+
+        public IActionResult Rules()
+        {
+            return View();
         }
 
         public IActionResult Lobby()
@@ -80,19 +65,83 @@ namespace WebAppMVC.Controllers
             PlayerModelContainer model = new PlayerModelContainer
             {
                 Players = deserializedPlayers
-            }; 
+            };
 
             return View(model);
         }
 
-        public IActionResult NewGame()
+        public IActionResult Game()
         {
-            return View();
+            var gameId = Request.Cookies["gameid"].ToString();
+            var request = new RestRequest($"api/ludo/{gameId}/getgamedetails", Method.GET);
+            IRestResponse<GameModel> getGameResponse = client.Execute<GameModel>(request);
+
+            return View(getGameResponse.Data);
         }
 
-        public IActionResult Rules()
+
+        public IActionResult CreateGame(CreateGameModel model)
         {
-            return View();
+            // Create game
+            var request = new RestRequest("api/ludo/createnewgame", Method.POST);
+            IRestResponse<Guid> createGameResponse = client.Execute<Guid>(request);
+            model.GameId = Guid.Parse(createGameResponse.Data.ToString());
+
+            // Add player that created game
+            // Duplicate code, refactor?
+            request = new RestRequest($"api/ludo/{model.GameId}/players/addplayer", Method.POST);
+            request.AddParameter(new Parameter("name", model.PlayerName, ParameterType.QueryString));
+            request.AddParameter(new Parameter("colorID", int.Parse(model.PlayerColor), ParameterType.QueryString));
+            IRestResponse<PlayerModel> addPlayerResponse = client.Execute<PlayerModel>(request);
+            model.PlayerId = addPlayerResponse.Data.PlayerId;
+
+            // Set cookies
+            CookieOptions cookie = new CookieOptions();
+            cookie.Expires = DateTime.Now.AddHours(1);
+            Response.Cookies.Append("gameid", model.GameId.ToString(), cookie);
+            Response.Cookies.Append("playercolorid", model.PlayerColor, cookie);
+            Response.Cookies.Append("playerid", model.PlayerId.ToString(), cookie);
+            Response.Cookies.Append("playername", model.PlayerName, cookie);
+
+            return RedirectToAction("Lobby");
+        }
+
+        public IActionResult SelectGame(CreateGameModel model)
+        {
+            // Duplicate code, refactor?
+            var request = new RestRequest($"api/ludo/{model.GameId}/players/addplayer", Method.POST);
+            request.AddParameter(new Parameter("name", model.PlayerName, ParameterType.QueryString));
+            request.AddParameter(new Parameter("colorID", int.Parse(model.PlayerColor), ParameterType.QueryString));
+            IRestResponse<PlayerModel> addPlayerResponse = client.Execute<PlayerModel>(request);
+            model.PlayerId = addPlayerResponse.Data.PlayerId;
+
+            // Set cookies
+            CookieOptions cookie = new CookieOptions();
+            cookie.Expires = DateTime.Now.AddHours(1);
+            Response.Cookies.Append("gameid", model.GameId.ToString(), cookie);
+            Response.Cookies.Append("playercolorid", model.PlayerColor, cookie);
+            Response.Cookies.Append("playerid", model.PlayerId.ToString(), cookie);
+            Response.Cookies.Append("playername", model.PlayerName, cookie);
+
+            return RedirectToAction("Lobby");
+        }
+
+        public IActionResult StartGame()
+        {
+            var gameId = Request.Cookies["gameid"].ToString();
+            var request = new RestRequest($"api/ludo/{gameId}/startgame", Method.PUT);
+            IRestResponse<bool> startGameResponse = client.Execute<bool>(request);
+            bool startGameSuccess = startGameResponse.Data;
+
+            if(startGameSuccess)
+            {
+                return RedirectToAction("Game");
+            }
+            else
+            {
+                ViewBag.errorMessage = "Couldn't start game.";
+                return RedirectToAction("Lobby");
+            }
         }
     }
 }
