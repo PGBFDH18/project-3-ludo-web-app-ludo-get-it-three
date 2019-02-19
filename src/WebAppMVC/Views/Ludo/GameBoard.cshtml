@@ -1,0 +1,200 @@
+﻿
+@model WebAppMVC.Models.GameBoardModel
+@{
+    ViewData["Title"] = "GameBoard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="~/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script language="javascript" src="~/js/site.js"></script>
+</head>
+<body>
+
+    <div class="C11">
+        <div id="piece0" class="player1">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C12">
+        <div id="piece1" class="player1">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C13">
+        <div id="piece2" class="player1">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C14">
+        <div id="piece3" class="player1">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="C21">
+        <div id="piece0" class="player2">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C22">
+        <div id="piece1" class="player2">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C23">
+        <div id="piece2" class="player2">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C24">
+        <div id="piece3" class="player2">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="C31">
+        <div id="piece0" class="player3">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C32">
+        <div id="piece1" class="player3">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C33">
+        <div id="piece2" class="player3">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C34">
+        <div id="piece3" class="player3">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="C41">
+        <div id="piece0" class="player4">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C42">
+        <div id="piece1" class="player4">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C43">
+        <div id="piece2" class="player4">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+    <div class="C44">
+        <div id="piece3" class="player4">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="board">
+        <div class="tile" id="0"></div>
+        <div class="tile" id="1"></div>
+        <div class="tile" id="2"></div>
+        <div class="tile" id="3"></div>
+        <div class="tile" id="4"></div>
+        <div class="tile" id="5"></div>
+        <div class="tile" id="6"></div>
+        <div class="tile" id="7"></div>
+        <div class="tile" id="8"></div>
+        <div class="tile" id="9"></div>
+        <div class="tile" id="10"></div>
+        <div class="tile" id="11"></div>
+        <div class="tile" id="12"></div>
+        <div class="tile" id="13"></div>
+        <div class="tile" id="14"></div>
+        <div class="tile" id="15"></div>
+        <div class="tile" id="16"></div>
+        <div class="tile" id="17"></div>
+        <div class="tile" id="18"></div>
+        <div class="tile" id="19"></div>
+        <div class="tile" id="20"></div>
+        <div class="tile" id="21"></div>
+        <div class="tile" id="22"></div>
+        <div class="tile" id="23"></div>
+        <div class="tile" id="24"></div>
+        <div class="tile" id="25"></div>
+        <div class="tile" id="26"></div>
+        <div class="tile" id="27"></div>
+        <div class="tile" id="28"></div>
+        <div class="tile" id="29"></div>
+        <div class="tile" id="30"></div>
+        <div class="tile" id="31"></div>
+        <div class="tile" id="32"></div>
+        <div class="redTile" id="r0"></div>
+        <div class="redTile" id="r1"></div>
+        <div class="redTile" id="r2"></div>
+        <div class="greenTile" id="g0"></div>
+        <div class="greenTile" id="g1"></div>
+        <div class="greenTile" id="g2"></div>
+        <div class="blueTile" id="b0"></div>
+        <div class="blueTile" id="b1"></div>
+        <div class="blueTile" id="b2"></div>
+        <div class="yellowTile" id="y0"></div>
+        <div class="yellowTile" id="y1"></div>
+        <div class="yellowTile" id="y2"></div>
+        <div class="WINNER" id="99"></div>
+    </div>
+</body>
+</html>
