@@ -7,6 +7,7 @@
 @{
     ViewData["Title"] = "Game";
     Layout = "_HomeLayout";
+
 }
 
 <html>
@@ -287,7 +288,8 @@
 
     @*GET GAMEID*@
     var elements = document.cookie.split(';');
-    var tmp = elements[0].split('=');
+    var foo = elements.filter(x => x.includes('gameid')).toString();
+    var tmp = foo.split('=');
     var gameID = tmp[1];
 
     document.getElementById("showID").innerHTML = gameID;
