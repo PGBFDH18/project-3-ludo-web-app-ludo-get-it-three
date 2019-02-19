@@ -59,7 +59,7 @@ namespace WebAppMVC.Controllers
             ViewBag.gameid = gameId;
 
             // Get players for the game and deserialize them
-            var request = new RestRequest($"api/ludo/{gameId}/players/getplayers", Method.GET);
+            var request = new RestRequest($"api/ludo/{gameId}/players/getallplayers", Method.GET);
             IRestResponse getAllPlayersResponse = client.Execute(request);
             PlayerModel[] deserializedPlayers = JsonConvert.DeserializeObject<PlayerModel[]>(getAllPlayersResponse.Content);
             PlayerModelContainer model = new PlayerModelContainer
