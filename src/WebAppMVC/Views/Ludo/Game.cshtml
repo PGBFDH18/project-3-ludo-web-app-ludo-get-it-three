@@ -1,4 +1,9 @@
-﻿@model WebAppMVC.Models.GameModel
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Html;
+@using Microsoft.AspNetCore.HttpOverrides;
+@using Microsoft.AspNetCore.Mvc;
+
+@model WebAppMVC.Models.GameModel
 @{
     ViewData["Title"] = "Game";
     Layout = "_HomeLayout";
@@ -13,114 +18,144 @@
     <!-- Content -->
     <header class="masthead p-5 text-center text-white">
         <div class="masthead-content">
-            <div class="container">
-            </div>
+            <div class="container"></div>
         </div>
         <div class="bg-circle-1 bg-circle"></div>
         <div class="bg-circle-2 bg-circle"></div>
         <div class="bg-circle-3 bg-circle"></div>
         <div class="bg-circle-4 bg-circle"></div>
     </header>
-    
+
     <div id="boardDiv" class="p-5">
-        <div id="gameCode"></div>
         <div class="grid-container">
             <div class="C41">
-                <div id="P0PY">
-                    <span class="Yellow fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="3" onClick="setPieceValue(codeInHtml, 3, 0)">
+                    <div class="1">
+                        <div class="player4">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C42">
-                <div id="P1PY">
-                    <span class="Yellow fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="3" onClick="setPieceValue(codeInHtml, 3, 1)">
+                    <div class="1">
+                        <div class="player4">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C43">
-                <div id="P2PY">
-                    <span class="Yellow fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="3" onClick="setPieceValue(codeInHtml, 3, 2)">
+                    <div class="2">
+                        <div class="player4">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn    fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C44">
-                <div id="P3PY">
-                    <span class="Yellow fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="3" onClick="setPieceValue(codeInHtml, 3, 3)">
+                    <div class="3">
+                        <div class="player4">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn    fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C11">
-                <div id="P0PR">
-                    <span class="Red fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="0" onClick="setPieceValue(codeInHtml, 0, 0)">
+                    <div class="0">
+                        <div class="player1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn    fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C12">
-                <div id="P1PR">
-                    <span class="Red fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="0" onClick="setPieceValue(codeInHtml, 0, 1)">
+                    <div class="1">
+                        <div class="player1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn    fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C13">
-                <div id="P2PR">
-                    <span class="Red fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="0" onClick="setPieceValue(codeInHtml, 0, 2)">
+                    <div class="2">
+                        <div class="player1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn    fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C14">
-                <div id="P3PR">
-                    <span class="Red fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="0" onClick="setPieceValue(codeInHtml, 0, 3)">
+                    <div class="3">
+                        <div class="player1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn    fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="B1"></div>
-            <div class="B2"></div>
-            <div class="B3"></div>
-            <div class="B4"></div>
-            <div class="B5"></div>
-            <div class="B6"></div>
-            <div class="B7"></div>
-            <div class="B8"></div>
-            <div class="B9"></div>
-            <div class="B10"></div>
-            <div class="B11"></div>
-            <div class="B12"></div>
-            <div class="B13"></div>
-            <div class="B14"></div>
-            <div class="B15"></div>
-            <div class="B16"></div>
-            <div class="B17"></div>
-            <div class="B18"></div>
-            <div class="B19"></div>
-            <div class="B20"></div>
-            <div class="B21"></div>
-            <div class="B22"></div>
-            <div class="B23"></div>
-            <div class="B24"></div>
-            <div class="B25"></div>
-            <div class="B26"></div>
-            <div class="B27"></div>
-            <div class="B28"></div>
-            <div class="B29"></div>
-            <div class="B30"></div>
-            <div class="B31"></div>
-            <div class="B32"></div>
+            <div class="B1" id="0"></div>
+            <div class="B2" id="1"></div>
+            <div class="B3" id="2"></div>
+            <div class="B4" id="3"></div>
+            <div class="B5" id="4"></div>
+            <div class="B6" id="5"></div>
+            <div class="B7" id="6"></div>
+            <div class="B8" id="7"></div>
+            <div class="B9" id="8"></div>
+            <div class="B10" id="9"></div>
+            <div class="B11" id="10"></div>
+            <div class="B12" id="11"></div>
+            <div class="B13" id="12"></div>
+            <div class="B14" id="13"></div>
+            <div class="B15" id="14"></div>
+            <div class="B16" id="15"></div>
+            <div class="B17" id="16"></div>
+            <div class="B18" id="17"></div>
+            <div class="B19" id="18"></div>
+            <div class="B20" id="19"></div>
+            <div class="B21" id="20"></div>
+            <div class="B22" id="21"></div>
+            <div class="B23" id="22"></div>
+            <div class="B24" id="23"></div>
+            <div class="B25" id="24"></div>
+            <div class="B26" id="25"></div>
+            <div class="B27" id="26"></div>
+            <div class="B28" id="27"></div>
+            <div class="B29" id="28"></div>
+            <div class="B30" id="29"></div>
+            <div class="B31" id="30"></div>
+            <div class="B32" id="31"></div>
             <div class="W11"></div>
             <div class="W12"></div>
             <div class="W13"></div>
@@ -135,73 +170,109 @@
             <div class="W42"></div>
             <div class="W43"></div>
             <div class="C21">
-                <div id="P0PG">
-                    <span class="Green fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="1" onClick="setPieceValue(codeInHtml, 1, 0)">
+                    <div class="0">
+                        <div class="player2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C22">
-                <div id="P1PG">
-                    <span class="Green fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="1" onClick="setPieceValue(codeInHtml, 1, 1)">
+                    <div class="1">
+                        <div class="player2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C23">
-                <div id="P2PG">
-                    <span class="Green fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="1" onClick="setPieceValue(codeInHtml, 1, 2)">
+                    <div class="2">
+                        <div class="player2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C24">
-                <div id="P3PG">
-                    <span class="Green fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="1" onClick="setPieceValue(codeInHtml, 1, 3)">
+                    <div class="3">
+                        <div class="player2">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C31">
-                <div id="P0PB">
-                    <span class="Blue fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="2" onClick="setPieceValue(codeInHtml, 2, 0)">
+                    <div class="0">
+                        <div class="player3">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C32">
-                <div id="P1PB">
-                    <span class="Blue fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="2" onClick="setPieceValue(codeInHtml, 2, 1)">
+                    <div class="1">
+                        <div class="player3">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C33">
-                <div id="P2PB">
-                    <span class="Blue fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="2" onClick="setPieceValue(codeInHtml, 2, 2)">
+                    <div class="2">
+                        <div class="player3">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="C34">
-                <div id="P3PB">
-                    <span class="Blue fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
-                    </span>
+                <div class="2" onClick="setPieceValue(codeInHtml, 2, 3)">
+                    <div class="3">
+                        <div class="player3">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="currentPlayer">@Model.players.First(p => p.PlayerId == Model.currentPlayerId).Name</div>
         <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
+        <button onclick="getID(), getPosition(codeInHtml)">Get position</button>
+
+        @*<div class="currentPlayer">@Model.players.First(p => p.PlayerId == Model.currentPlayerId).Name</div>*@
+
+        <h4 id="showID"></h4>
+
         <p id="getRollNumber"></p>
         <p id="getRollNumber2"></p>
     </div>
@@ -209,14 +280,24 @@
 </body>
 </html>
 
-<script type="text/javascript">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/api/script.js"></script>
 
-    function movePiece(gameURL) {
+<script>
 
-        fetchPieceInfo(gameURL, pieceValue, diceValue);
-        var newPosition = null;
-        newPosition = ".B" + diceValue;
+    @*GET GAMEID*@
+    var elements = document.cookie.split(';');
+    var tmp = elements[0].split('=');
+    var gameID = tmp[1];
 
-        var thePiece = "#P" + pieceValue + "P" + diceValue;
+    document.getElementById("showID").innerHTML = gameID;
+
+    var codeInHtml = "";
+    var showJoinBox = document.getElementById("showCode");
+    var showNewGameBox = document.getElementById("showPlayers");
+    function getID(){
+      codeInHtml = document.getElementById("showID").innerHTML;
+      return codeInHtml;
     }
+
 </script>

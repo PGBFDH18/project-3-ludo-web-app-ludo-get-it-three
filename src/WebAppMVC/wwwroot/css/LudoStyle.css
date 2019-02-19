@@ -149,22 +149,6 @@
     transform: rotate(270deg);
 }
 
-.player1 {
-    background: red;
-}
-
-.player2 {
-    background: green;
-}
-
-.player3 {
-    background: orange;
-}
-
-.player4 {
-    background: blue;
-}
-
 .start.player1 {
     left: 0px;
     top: 540px;
