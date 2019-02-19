@@ -188,41 +188,41 @@ header.masthead .bg-circle-4 {
   vertical-align: middle;
 }
 
-.Red {
+.player1 {
   color: #d61f1f;
 }
 
-.Red .fa-circle {
+.player1 .fa-circle {
   background: linear-gradient(0deg, #d61f1f 0%, #ee6767 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.Green {
+.player2 {
   color: #43b110;
 }
 
-.Green .fa-circle {
+.player2 .fa-circle {
   background: linear-gradient(0deg, #43b110 0%, #67cc59 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.Blue {
+.player3 {
   color: #1f59d6;
 }
 
-.Blue .fa-circle {
+.player3 .fa-circle {
   background: linear-gradient(0deg, #1f59d6 0%, #678bee 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.Yellow {
+.player4 {
   color: #d3d61f;
 }
 
-.Yellow .fa-circle {
+.player4 .fa-circle {
   background: linear-gradient(0deg, #d3d61f 0%, #eee067 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
