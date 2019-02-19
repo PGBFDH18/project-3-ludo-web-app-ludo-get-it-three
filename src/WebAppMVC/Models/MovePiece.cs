@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace WebAppMVC.Models
 {
-    public class PlayerModelContainer
+    public class MovePiece
     {
+        public int numberOfFields { get; set; }
         public Guid gameId { get; set; }
-        public PlayerModel[] Players { get; set; }
+        public int pieceId { get; set; }
     }
 }

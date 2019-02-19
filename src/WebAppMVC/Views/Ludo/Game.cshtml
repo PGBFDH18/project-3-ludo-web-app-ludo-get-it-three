@@ -12,7 +12,6 @@
 <body>
     <div></div>
     <div class="gameInfo">
-
         <div class="currentPlayer">@Model.players.First(p => p.PlayerId == Model.currentPlayerId).Name</div>
 
         <form asp-action="RollDice" asp-controller="Ludo">
@@ -171,6 +170,18 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
 
+<script type="text/javascript">
+
+    function movePiece(gameURL) {
+
+        fetchPieceInfo(gameURL, pieceValue, diceValue);
+        var newPosition = null;
+        newPosition = ".B" + diceValue;
+
+        var thePiece = "#P" + pieceValue + "P" + diceValue;
+    }
+</script>

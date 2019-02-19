@@ -11,6 +11,8 @@ namespace WebAppMVC.Models
         public GameState gameState { get; set; }
         public List<PlayerModel> players { get; set; }
         public int currentPlayerId { get; set; }
+
         public int diceValue { get; set; }
+        public MovePiece movePiece { get; set; }
     }
 }

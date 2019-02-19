@@ -8,12 +8,24 @@
     <title>New game</title>
 </head>
 <body>
-    <div class="text-center">
+    <!-- Content -->
+    <header class="masthead p-5 text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <div class="text-center p-5">
 
         <form asp-action="CreateGame" asp-controller="Ludo">
             <div>
                 <label asp-for="PlayerName"></label>
-                <input asp-for="PlayerName" type="text" placeholder="Please enter your name" />
+                <input class="search rounded-pill" asp-for="PlayerName" type="text" placeholder="Please enter your name" />
             </div>
             <div>
                 <label asp-for="PlayerColor"></label>
@@ -24,7 +36,7 @@
                     <option value="3">Yellow</option>
                 </select>
             </div>
-            <input type="submit" value="New Game" />
+            <input class="btn btn-primary rounded-pill" type="submit" value="New Game" />
         </form>
     </div>
 </body>
