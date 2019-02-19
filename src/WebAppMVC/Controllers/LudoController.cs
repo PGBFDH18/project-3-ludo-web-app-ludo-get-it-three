@@ -15,9 +15,9 @@ namespace WebAppMVC.Controllers
     {
         private IRestClient client;
 
-        public LudoController(IRestClient _client)
+        public LudoController(IRestClient client)
         {
-            client = _client;
+            this.client = client;
             client.BaseUrl = new Uri("https://ludogame.azurewebsites.net");
         }
 
