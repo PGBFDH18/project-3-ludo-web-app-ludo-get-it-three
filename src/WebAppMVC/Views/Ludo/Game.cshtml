@@ -10,160 +10,200 @@
     <link href="~/css/LudoStyle.css" rel="stylesheet" />
 </head>
 <body>
-    <div></div>
-    <div class="gameInfo">
+    <!-- Content -->
+    <header class="masthead p-5 text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+    
+    <div id="boardDiv" class="p-5">
+        <div id="gameCode"></div>
+        <div class="grid-container">
+            <div class="C41">
+                <div id="P0PY">
+                    <span class="Yellow fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C42">
+                <div id="P1PY">
+                    <span class="Yellow fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C43">
+                <div id="P2PY">
+                    <span class="Yellow fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C44">
+                <div id="P3PY">
+                    <span class="Yellow fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C11">
+                <div id="P0PR">
+                    <span class="Red fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C12">
+                <div id="P1PR">
+                    <span class="Red fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C13">
+                <div id="P2PR">
+                    <span class="Red fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C14">
+                <div id="P3PR">
+                    <span class="Red fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="B1"></div>
+            <div class="B2"></div>
+            <div class="B3"></div>
+            <div class="B4"></div>
+            <div class="B5"></div>
+            <div class="B6"></div>
+            <div class="B7"></div>
+            <div class="B8"></div>
+            <div class="B9"></div>
+            <div class="B10"></div>
+            <div class="B11"></div>
+            <div class="B12"></div>
+            <div class="B13"></div>
+            <div class="B14"></div>
+            <div class="B15"></div>
+            <div class="B16"></div>
+            <div class="B17"></div>
+            <div class="B18"></div>
+            <div class="B19"></div>
+            <div class="B20"></div>
+            <div class="B21"></div>
+            <div class="B22"></div>
+            <div class="B23"></div>
+            <div class="B24"></div>
+            <div class="B25"></div>
+            <div class="B26"></div>
+            <div class="B27"></div>
+            <div class="B28"></div>
+            <div class="B29"></div>
+            <div class="B30"></div>
+            <div class="B31"></div>
+            <div class="B32"></div>
+            <div class="W11"></div>
+            <div class="W12"></div>
+            <div class="W13"></div>
+            <div class="WINNER"></div>
+            <div class="W21"></div>
+            <div class="W22"></div>
+            <div class="W23"></div>
+            <div class="W31"></div>
+            <div class="W32"></div>
+            <div class="W33"></div>
+            <div class="W41"></div>
+            <div class="W42"></div>
+            <div class="W43"></div>
+            <div class="C21">
+                <div id="P0PG">
+                    <span class="Green fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C22">
+                <div id="P1PG">
+                    <span class="Green fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C23">
+                <div id="P2PG">
+                    <span class="Green fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C24">
+                <div id="P3PG">
+                    <span class="Green fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C31">
+                <div id="P0PB">
+                    <span class="Blue fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C32">
+                <div id="P1PB">
+                    <span class="Blue fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C33">
+                <div id="P2PB">
+                    <span class="Blue fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="C34">
+                <div id="P3PB">
+                    <span class="Blue fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
         <div class="currentPlayer">@Model.players.First(p => p.PlayerId == Model.currentPlayerId).Name</div>
-        <div class="dice">
-            <div class="diceDot" id="center"></div>
-            <div class="diceDot" id="leftUpper"></div>
-            <div class="diceDot" id="leftMiddel"></div>
-            <div class="diceDot" id="leftLower"></div>
-            <div class="diceDot" id="rightUpper"></div>
-            <div class="diceDot" id="rightMiddel"></div>
-            <div class="diceDot" id="rightLower"></div>
-        </div>
-    </div>
-    <div class="board">
-        <div class="wing" id="leftWing">
-            <div class="field"></div>
-            <div class="field player2"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field player2"></div>
-            <div class="field player2"></div>
-            <div class="field player2"></div>
-            <div class="field player2"></div>
-            <div class="field player2"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-        </div>
-        <div class="wing" id="rightWing">
-            <div class="field"></div>
-            <div class="field player3"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field player3"></div>
-            <div class="field player3"></div>
-            <div class="field player3"></div>
-            <div class="field player3"></div>
-            <div class="field player3"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-        </div>
-        <div class="wing" id="topWing">
-            <div class="field"></div>
-            <div class="field player4"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field player4"></div>
-            <div class="field player4"></div>
-            <div class="field player4"></div>
-            <div class="field player4"></div>
-            <div class="field player4"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-        </div>
-        <div class="wing" id="bottomWing">
-            <div class="field"></div>
-            <div class="field player1"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field player1"></div>
-            <div class="field player1"></div>
-            <div class="field player1"></div>
-            <div class="field player1"></div>
-            <div class="field player1"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-        </div>
-
-        <div class="goal"></div>
-        <div class="start player1">
-
-            <div class="field">
-                <div class="brick player1"></div>
-            </div>
-            <div class="field">
-                <div class="brick player1"></div>
-            </div>
-            <div class="field">
-                <div class="brick player1"></div>
-            </div>
-            <div class="field">
-                <div class="brick player1"></div>
-            </div>
-        </div>
-
-        <div class="start player2">
-            <div class="field">
-                <div class="brick player2"></div>
-            </div>
-            <div class="field">
-                <div class="brick player2"></div>
-            </div>
-            <div class="field">
-                <div class="brick player2"></div>
-            </div>
-            <div class="field">
-                <div class="brick player2"></div>
-            </div>
-        </div>
-        <div class="start player3">
-            <div class="field">
-                <div class="brick player3"></div>
-            </div>
-            <div class="field">
-                <div class="brick player3"></div>
-            </div>
-            <div class="field">
-                <div class="brick player3"></div>
-            </div>
-            <div class="field">
-                <div class="brick player3"></div>
-            </div>
-        </div>
-        <div class="start player4">
-            <div class="field">
-                <div class="brick player4"></div>
-            </div>
-            <div class="field">
-                <div class="brick player4"></div>
-            </div>
-            <div class="field">
-                <div class="brick player4"></div>
-            </div>
-            <div class="field">
-                <div class="brick player4"></div>
-            </div>
-        </div>
+        <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
+        <p id="getRollNumber"></p>
+        <p id="getRollNumber2"></p>
     </div>
 
 </body>
