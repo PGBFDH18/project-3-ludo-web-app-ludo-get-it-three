@@ -13,27 +13,40 @@
 <html>
 <body>
 
-    <h1>@ViewData["Title"]</h1>
+    <!-- Content -->
+    <header class="masthead p-5 text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <div class="p-5">
+
+        @{
+            string[] outerlist = ViewData["Message"].ToString().Split("|");
+        }
 
 
-    @{
-        string[] outerlist = ViewData["Message"].ToString().Split("|");
-    }
-
-
-    @foreach (var x in outerlist)
-    {
-        string[] list = x.Split("*");
-        <h2>@list[0]</h2>
-        <ul style="list-style-type:square;">
-            @foreach (var y in list)
-            {
-                if (y == list[0]) { }
-                else
+        @foreach (var x in outerlist)
+        {
+            string[] list = x.Split("*");
+            <h2>@list[0]</h2>
+            <ul style="list-style-type:square;">
+                @foreach (var y in list)
                 {
-                    <li>@y</li>}
-            }
-        </ul>
-    }
+                    if (y == list[0]) { }
+                    else
+                    {
+                        <li>@y</li>}
+                }
+            </ul>
+        }
+
+    </div>
 </body>
 </html>

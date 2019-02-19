@@ -8,26 +8,43 @@
     <title>Lobby</title>
 </head>
 <body>
-    <h1>Lobby</h1>
-    @if (ViewBag.errorMessage != null)
-    {
-        <p>@ViewBag.errorMessage</p>
-    }
+    <!-- Content -->
+    <header class="masthead p-5 text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
 
-    @if (ViewBag.message != null)
-    {
-        <p>@ViewBag.message</p>
-    }
-    else
-    {
-        <h4>Game ID: @ViewBag.gameid</h4>
-        <h5>Players</h5>
-        foreach(PlayerModel player in Model.Players)
+    <div class="p-5">
+        @if (ViewBag.errorMessage != null)
         {
-            <p>@player.Name</p>
+            <p>@ViewBag.errorMessage</p>
         }
-        <form asp-action="StartGame" asp-controller="Ludo">
-            <button type="submit">Start Game</button>
-        </form>
-    }
+
+        @if (ViewBag.message != null)
+        {
+            <p>@ViewBag.message</p>
+        }
+        else
+        {
+            <h4>Game ID: @ViewBag.gameid</h4>
+            <h5>Players</h5>
+            foreach (PlayerModel player in Model.Players)
+            {
+                <span class="@player.PlayerColor fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                </span>
+                <label>@player.Name</label>
+            }
+            <form asp-action="StartGame" asp-controller="Ludo">
+                <button class="btn btn-primary rounded-pill mt-3" type="submit">Start Game</button>
+            </form>
+        }
+    </div>
 </body>
