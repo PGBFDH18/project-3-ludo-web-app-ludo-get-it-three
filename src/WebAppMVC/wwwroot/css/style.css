@@ -12,6 +12,10 @@ h6 {
   font-weight: 800 !important;
 }
 
+* {
+    box-sizing:unset;
+}
+
 .btn-xl {
   text-transform: uppercase;
   padding: 1.5rem 3rem;

@@ -8,6 +8,7 @@ namespace WebAppMVC.Models
 {
     public class PlayerModelContainer
     {
+        public Guid gameId { get; set; }
         public PlayerModel[] Players { get; set; }
     }
 }
