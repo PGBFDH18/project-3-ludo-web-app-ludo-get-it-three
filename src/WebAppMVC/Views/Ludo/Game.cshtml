@@ -14,6 +14,11 @@
     <div class="gameInfo">
 
         <div class="currentPlayer">@Model.players.First(p => p.PlayerId == Model.currentPlayerId).Name</div>
+
+        <form asp-action="RollDice" asp-controller="Ludo">
+            <input type="submit"/>
+        </form>
+        
         <div class="dice">
             <div class="diceDot" id="center"></div>
             <div class="diceDot" id="leftUpper"></div>
@@ -166,8 +171,6 @@
             </div>
         </div>
     </div>
-
-
 </body>
 </html>
 
