@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Controlpanel";
+    //Layout = "_AdminLayout";
 }
 <head>
     <style>
@@ -48,25 +49,29 @@
 </head>
 
 <h1>Wellcome @ViewBag.User !</h1>
-<h3>Delete All Games :3 </h3>
 <div class="killbutton" onClick="playAudio()"> <a style="color: #ff0066;"> </a> </div>
 <div class="killbutton1"</div>
 <div style="width:50%;">
     <canvas id="canvas"></canvas>
 </div>
+<form asp-action="DeleteAllGames" asp-controller="Admin">
+    <input type="submit" , value="Delete All Games" id="delete" />
+    <p>@ViewBag.DeleteAllGames</p>
+</form>
 
-<audio id="myAudio">
-    <source src="~/Resources/Audio/fuck.mp3" type="audio/mpeg">
+<audio autoplay id="myAudio">
+    <source src="~/Resources/Audio/bosstheme.mp3" type="audio/mpeg">
 </audio>
-
 <script>
     var x = document.getElementById("myAudio");
 
     function playAudio() {
-        x.play();
-    }
-
-    function pauseAudio() {
-        x.pause();
+        if (x.paused) {
+            x.play();
+        }
+        else {
+            x.pause();
+            x.currentTime = 0
+        }
     }
 </script>
