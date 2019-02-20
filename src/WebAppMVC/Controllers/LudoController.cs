@@ -111,18 +111,6 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
-        //public IActionResult SelectGame(CreateGameModel model)
-        //{
-        //    // Add the joining player to the game
-        //    PlayerModel addedPlayer = ApiMethods.AddPlayer(model.GameId, model.PlayerName, model.PlayerColor, client);
-        //    model.PlayerId = addedPlayer.PlayerId;
-
-        //    // Set cookies
-        //    ApiMethods.AssignPlayerCookies(model, Response);
-
-        //    return RedirectToAction("Lobby");
-        //}
-
         public IActionResult StartGame()
         {
             Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
