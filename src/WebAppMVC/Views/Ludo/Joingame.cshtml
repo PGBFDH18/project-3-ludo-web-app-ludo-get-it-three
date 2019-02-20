@@ -3,7 +3,6 @@
     ViewData["Title"] = "Joingame";
     Layout = "_HomeLayout";
 }
-
 <head>
     <title>Join game</title>
 </head>
@@ -24,7 +23,14 @@
         <form asp-action="SelectGame" asp-controller="Ludo">
             <div>
                 <label asp-for="GameId"></label>
-                <input class="search rounded-pill" asp-for="GameId" type="text" />
+                <select asp-for="GameId">
+                    @foreach (var game in @ViewBag.games)
+                    {
+                        {
+                            <option value="@game.Key">@game.Key</option>
+                        }
+                    }
+                </select>
             </div>
             <div>
                 <label asp-for="PlayerName"></label>
@@ -41,14 +47,5 @@
             </div>
             <input class="btn btn-secondary rounded-pill" type="submit" value="Join Game" />
         </form>
-
-
-        @*<label> Select Game ID: </label>
-            <select>
-                @for (int i = 0; i < Model.AllGames.Count(); i++)
-                {
-                    <option value="@i">@Model.AllGames.ElementAt(i).Key</option>
-                }
-            </select>*@
     </div>
 </body>

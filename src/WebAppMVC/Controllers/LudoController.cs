@@ -22,28 +22,41 @@ namespace WebAppMVC.Controllers
             client.BaseUrl = new Uri("https://ludogame.azurewebsites.net");
         }
 
-        public IActionResult Home()
+        public IActionResult CreateGame(CreateGameModel model)
         {
-            return View();
+            // Create game
+            model.GameId = ApiMethods.CreateGame(client);
+
+            // Add player that created game
+            PlayerModel addedPlayer = ApiMethods.AddPlayer(model.GameId, model.PlayerName, model.PlayerColor, client);
+            model.PlayerId = addedPlayer.PlayerId;
+
+            // Set cookies
+            ApiMethods.AssignPlayerCookies(model, Response);
+
+            return RedirectToAction("Lobby");
         }
 
-        public IActionResult NewGame()
+        public IActionResult Game()
+        {
+            Guid gameId = Guid.Parse(Request.Cookies["gameid"].ToString());
+            GameModel game = ApiMethods.GetSpecificGame(gameId, client);
+
+            return View(game);
+        }
+
+        public IActionResult Home()
         {
             return View();
         }
 
         public async Task<IActionResult> JoinGame()
         {
-            //var response = new RestRequest("api/ludo/getallgames", Method.GET);
-            //var restResponse = await client.ExecuteTaskAsync(response);
-            //var allGames = Game.FromJson(restResponse.Content);
-            //GameList output = new GameList() { AllGames = allGames };
-
-            return View(/*output*/);
-        }
-
-        public IActionResult Rules()
-        {
+            var response = new RestRequest("api/ludo/getallgames", Method.GET);
+            var restResponse = await client.ExecuteTaskAsync(response);
+            var allGames = WebAppMVC.Models.Game.FromJson(restResponse.Content);
+            GameList output = new GameList() { AllGames = allGames };
+            ViewBag.Games = output.AllGames;
             return View();
         }
 
@@ -68,27 +81,14 @@ namespace WebAppMVC.Controllers
             return View(model);
         }
 
-        public IActionResult Game()
+        public IActionResult NewGame()
         {
-            Guid gameId = Guid.Parse(Request.Cookies["gameid"].ToString());
-            GameModel game = ApiMethods.GetSpecificGame(gameId, client);
-
-            return View(game);
+            return View();
         }
 
-        public IActionResult CreateGame(CreateGameModel model)
+        public IActionResult Rules()
         {
-            // Create game
-            model.GameId = ApiMethods.CreateGame(client);
-
-            // Add player that created game
-            PlayerModel addedPlayer = ApiMethods.AddPlayer(model.GameId, model.PlayerName, model.PlayerColor, client);
-            model.PlayerId = addedPlayer.PlayerId;
-
-            // Set cookies
-            ApiMethods.AssignPlayerCookies(model, Response);
-
-            return RedirectToAction("Lobby");
+            return View();
         }
 
         public IActionResult SelectGame(CreateGameModel model)
@@ -108,14 +108,14 @@ namespace WebAppMVC.Controllers
             Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
             bool startGameSuccess = ApiMethods.StartGame(gameId, client);
 
-            if(startGameSuccess)
+            if (startGameSuccess)
             {
                 return RedirectToAction("Game");
             }
             else
             {
                 ViewBag.errorMessage = "Couldn't start game.";
-                return View("Lobby", new PlayerModelContainer { gameId = gameId ,Players = ApiMethods.GetAllPlayers(gameId, client)});
+                return View("Lobby", new PlayerModelContainer { gameId = gameId, Players = ApiMethods.GetAllPlayers(gameId, client) });
             }
         }
     }
