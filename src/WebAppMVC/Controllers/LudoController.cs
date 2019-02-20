@@ -54,6 +54,11 @@ namespace WebAppMVC.Controllers
 
         public IActionResult Game()
         {
+            if(Request.Cookies["gameid"].ToString() == null)
+            {
+                RedirectToAction("newgame");
+            }
+
             Guid gameId = Guid.Parse(Request.Cookies["gameid"].ToString());
             GameModel game = ApiMethods.GetSpecificGame(gameId, client);
 
