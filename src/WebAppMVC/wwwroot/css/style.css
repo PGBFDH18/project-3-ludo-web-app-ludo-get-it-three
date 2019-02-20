@@ -188,41 +188,73 @@ header.masthead .bg-circle-4 {
   vertical-align: middle;
 }
 
+<<<<<<< HEAD
 .player1, .Red {
   color: #d61f1f;
 }
 
 .player1 .fa-circle, .Red .fa-circle {
+=======
+.Red {
+  color: #d61f1f;
+}
+
+.Red .fa-circle {
+>>>>>>> parent of bd72706... jQuery
   background: linear-gradient(0deg, #d61f1f 0%, #ee6767 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+<<<<<<< HEAD
 .player2, .Green {
   color: #43b110;
 }
 
 .player2 .fa-circle, .Green .fa-circle {
+=======
+.Green {
+  color: #43b110;
+}
+
+.Green .fa-circle {
+>>>>>>> parent of bd72706... jQuery
   background: linear-gradient(0deg, #43b110 0%, #67cc59 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+<<<<<<< HEAD
 .player3, .Blue {
   color: #1f59d6;
 }
 
 .player3 .fa-circle, .Blue .fa-circle {
+=======
+.Blue {
+  color: #1f59d6;
+}
+
+.Blue .fa-circle {
+>>>>>>> parent of bd72706... jQuery
   background: linear-gradient(0deg, #1f59d6 0%, #678bee 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+<<<<<<< HEAD
 .player4, .Yellow {
   color: #d3d61f;
 }
 
 .player4 .fa-circle, .Yellow .fa-circle {
+=======
+.Yellow {
+  color: #d3d61f;
+}
+
+.Yellow .fa-circle {
+>>>>>>> parent of bd72706... jQuery
   background: linear-gradient(0deg, #d3d61f 0%, #eee067 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
