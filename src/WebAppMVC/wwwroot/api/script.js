@@ -1,6 +1,6 @@
 var localURL = "https://ludogame.azurewebsites.net/api/ludo/";
 var board = document.getElementById('boardDiv');
-var rField = document.getElementById('rightField').getElementsByTagName('p1');
+var rField = document.getElementById('rightField');
 var newDiv = document.getElementById('newDiv');
 var message = document.getElementById('errorMessage');
 var gameStarted = document.getElementById("showCode");
@@ -51,9 +51,6 @@ function joinGame() {
     }
 
 }
-
-  
-
 
 function rollDice(gameURL) {
     //getPosition(gameURL);
