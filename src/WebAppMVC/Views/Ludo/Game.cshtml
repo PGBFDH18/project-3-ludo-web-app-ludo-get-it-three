@@ -13,7 +13,6 @@
 <html>
 <head>
     <title>Game</title>
-    <link href="~/css/LudoStyle.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Content -->
@@ -26,7 +25,41 @@
         <div class="bg-circle-3 bg-circle"></div>
         <div class="bg-circle-4 bg-circle"></div>
     </header>
-    
+
+    <div class="text-representation">
+        @foreach (PlayerModel player in Model.players)
+        {
+            var playerName = player.Name;
+            var playerId = player.PlayerId;
+            var foo = "innerText" + playerId;
+            <div class="@foo">
+                <p><strong>Player: @playerName</strong></p>
+                @foreach (PieceModel piece in player.Pieces)
+                {
+                    var pieceId = piece.PieceId + 1;
+                    var piecePosition = piece.Position;
+                    <p>Piece: @pieceId | Position: @piecePosition</p>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="buttons-area">
+        <form asp-action="rollDice">
+            <input value="Rulla tärningen!" type="submit" />
+            <p>Du slog: @Model.diceValue</p>
+        </form>
+        <form asp-action="movePiece">
+            <label>Välj vilken pjäs du vill flytta: </label>
+            <div>
+                <input type="submit" asp-for="pieceId" value="0" />
+                <input type="submit" asp-for="pieceId" value="1" />
+                <input type="submit" asp-for="pieceId" value="2" />
+                <input type="submit" asp-for="pieceId" value="3" />
+            </div>
+        </form>
+    </div>
+
     <div id="boardDiv" class="p-5">
         <div class="grid-container">
             <div class="C41">
@@ -267,7 +300,7 @@
                 </div>
             </div>
         </div>
-        <h1>@Model.players[Model.currentPlayerId].Name</h1>
+        @*<h1>@Model.players[Model.currentPlayerId].Name</h1>
 
         <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
         <button onclick="getID(), getPosition(codeInHtml)">Get position</button>
@@ -275,23 +308,7 @@
         <h4 id="showID"></h4>
 
         <p id="getRollNumber"></p>
-        <p id="getRollNumber2"></p>
-    </div>
-    <div>
-        <form asp-action="rollDice">
-            <input type="submit" />
-        </form>
-        <form asp-action="movePiece">
-            <input type="submit" asp-for="pieceId" value="0" />
-            <input type="submit" asp-for="pieceId" value="1" />
-            <input type="submit" asp-for="pieceId" value="2" />
-            <input type="submit" asp-for="pieceId" value="3" />
-        </form>
-    </div>
-    <div>
-        <label>
-            Dice value: @Model.diceValue;
-        </label>
+        <p id="getRollNumber2"></p>*@
     </div>
 
 </body>
