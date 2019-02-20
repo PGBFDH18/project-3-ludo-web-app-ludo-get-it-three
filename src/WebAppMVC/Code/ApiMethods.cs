@@ -60,5 +60,31 @@ namespace WebAppMVC.Code
             Response.Cookies.Append("gameid", model.GameId.ToString(), cookie);
         }
 
+        static public int RollDice(Guid gameId, IRestClient client)
+        {
+            var request = new RestRequest($"api/ludo/{gameId}/rolldice", Method.GET);
+            IRestResponse<int> rollDiceResponse = client.Execute<int>(request);
+
+            return rollDiceResponse.Data;
+        }
+
+        static public PieceModel MovePiece(Guid gameId, int pieceId, int numberOfFields, IRestClient client)
+        {
+            var request = new RestRequest($"api/ludo/{gameId}/movepiece", Method.PUT);
+            request.AddParameter("pieceId", pieceId, ParameterType.QueryString);
+            request.AddParameter("numberOfFields", numberOfFields, ParameterType.QueryString);
+
+            IRestResponse<PieceModel> movePieceResponse = client.Execute<PieceModel>(request);
+
+            EndTurn(gameId, client);
+            return movePieceResponse.Data;
+        }
+
+        static public void EndTurn(Guid gameId, IRestClient client)
+        {
+            var request = new RestRequest($"api/ludo/{gameId}/endturn", Method.PUT);
+            IRestResponse endTurnResponse = client.Execute(request);
+        }
+
     }
 }

@@ -72,6 +72,10 @@ namespace WebAppMVC.Controllers
         {
             Guid gameId = Guid.Parse(Request.Cookies["gameid"].ToString());
             GameModel game = ApiMethods.GetSpecificGame(gameId, client);
+            if(Request.Cookies["lastdicevalue"] != null)
+            {
+                game.diceValue = int.Parse(Request.Cookies["lastdicevalue"]);
+            }
 
             return View(game);
         }
@@ -80,7 +84,6 @@ namespace WebAppMVC.Controllers
         {
             // Create game
             model.GameId = ApiMethods.CreateGame(client);
-
 
             // Add all players that aren't null to the game.
             if (model.Player1Name != null)
@@ -132,6 +135,24 @@ namespace WebAppMVC.Controllers
                 ViewBag.errorMessage = "Couldn't start game.";
                 return View("Lobby", new PlayerModelContainer { gameId = gameId ,Players = ApiMethods.GetAllPlayers(gameId, client)});
             }
+        }
+
+        public IActionResult RollDice(GameModel model)
+        {
+
+            Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
+            CookieOptions cookie = new CookieOptions();
+            cookie.Expires = DateTime.Now.AddHours(1);
+            Response.Cookies.Append("lastdicevalue", ApiMethods.RollDice(gameId, client).ToString(), cookie);
+
+            return RedirectToAction("game");
+        }
+
+        public IActionResult MovePiece(GameModel model)
+        {
+            Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
+            ApiMethods.MovePiece(gameId, model.pieceId, int.Parse(Request.Cookies["lastdicevalue"]), client);
+            return RedirectToAction("game");
         }
     }
 }
