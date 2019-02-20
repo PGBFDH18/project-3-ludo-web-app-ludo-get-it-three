@@ -45,6 +45,7 @@
     </div>
 
     <div class="buttons-area">
+        <p>Current Player: @Model.players[Model.currentPlayerId].Name</p>
         <form asp-action="rollDice">
             <input value="Rulla tärningen!" type="submit" />
             <p>Du slog: @Model.diceValue</p>
@@ -302,15 +303,14 @@
         </div>
         @*<h1>@Model.players[Model.currentPlayerId].Name</h1>
 
-        <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
-        <button onclick="getID(), getPosition(codeInHtml)">Get position</button>
+            <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
+            <button onclick="getID(), getPosition(codeInHtml)">Get position</button>
 
-        <h4 id="showID"></h4>
+            <h4 id="showID"></h4>
 
-        <p id="getRollNumber"></p>
-        <p id="getRollNumber2"></p>*@
+            <p id="getRollNumber"></p>
+            <p id="getRollNumber2"></p>*@
     </div>
-
 </body>
 </html>
 
@@ -334,5 +334,4 @@
       codeInHtml = document.getElementById("showID").innerHTML;
       return codeInHtml;
     }
-
 </script>
