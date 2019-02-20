@@ -1,9 +1,6 @@
 var localURL = "https://ludogame.azurewebsites.net/api/ludo/";
 var board = document.getElementById('boardDiv');
-<<<<<<< HEAD
 var rField = document.getElementById('rightField').getElementsByTagName('p1');
-=======
->>>>>>> parent of 9c39815... Fixes
 var newDiv = document.getElementById('newDiv');
 var message = document.getElementById('errorMessage');
 var gameStarted = document.getElementById("showCode");
@@ -149,8 +146,8 @@ function rollDice(gameURL) {
         }
     });
     diceValue = result;
-    rollNumber.textContent = result;
-    return board.appendChild(rollNumber);
+    rollNumber.textContent = "You rolled: " + result;
+    return rField.appendChild(rollNumber);
 }
 
 function startGame(gameURL) {
@@ -191,7 +188,7 @@ function getPosition(gameURL) {
 
     rollNumber2.textContent = output;
     
-    return board.appendChild(rollNumber2);
+    return rField.appendChild(rollNumber2);
 }
 
 function movePiece(gameURL){
