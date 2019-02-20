@@ -52,85 +52,8 @@ function joinGame() {
 
 }
 
-function createGame(gameURL) {
-    var result = null;
-    $.ajax({
-        type: "POST",
-        async: false,
-        url: localURL + gameURL,
-        dataType: "json",
-        success: function(data){
-            result = data;
-        }
-    });
-    return result;
-}
   
-function newGame() {
 
-    var gameURL = "createnewgame";
-    var gameID = createGame(gameURL);
-
-
-    setGameID.textContent = gameID;
-
-    board.appendChild(setGameID);
-  
-    var p1 = document.getElementById('player1').value;
-    var p2 = document.getElementById('player2').value;
-    var p3 = document.getElementById('player3').value;
-    var p4 = document.getElementById('player4').value;
-
-    if (p1 != "") {
-        $.ajax({
-            type: "POST",
-            async: true,
-            url: localURL + gameID + "/players/addplayer?name=" + p1 + "&colorID=0",
-            success: function(data){
-                console.log(data);
-            }
-        });
-    }
-    if (p2 != "") {
-        $.ajax({
-            type: "POST",
-            async: true,
-            url: localURL + gameID + "/players/addplayer?name=" + p2 + "&colorID=1",
-            success: function(data){
-                console.log(data);
-            }
-        });
-    }
-    if (p3 != "") {
-        $.ajax({
-            type: "POST",
-            async: true,
-            url: localURL + gameID + "/players/addplayer?name=" + p3 + "&colorID=2",
-            success: function(data){
-                console.log(data);
-            }
-        });
-    }
-    if (p4 != "") {
-        $.ajax({
-            type: "POST",
-            async: true,
-            url: localURL + gameID + "/players/addplayer?name=" + p4 + "&colorID=3",
-            success: function(data){
-                console.log(data);
-            }
-        });
-    }
-
-    if (board.style.display === "none") {
-        board.style.display = "block";
-        newDiv.style.display = "none";
-    }
-
-    startGame(gameID);
-
-    //getPosition(gameID);
-}
 
 function rollDice(gameURL) {
     //getPosition(gameURL);
