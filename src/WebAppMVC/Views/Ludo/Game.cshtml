@@ -27,6 +27,7 @@
         <div class="bg-circle-4 bg-circle"></div>
     </header>
 
+    <h1>@Model.players[Model.currentPlayerId].Name</h1>
     <div id="boardDiv" class="p-5">
         <div class="grid-container">
             <div class="C41">
@@ -269,8 +270,6 @@
         </div>
         <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
         <button onclick="getID(), getPosition(codeInHtml)">Get position</button>
-
-        @*<div class="currentPlayer">@Model.players.First(p => p.PlayerId == Model.currentPlayerId).Name</div>*@
 
         <h4 id="showID"></h4>
 

@@ -212,6 +212,7 @@ function movePiece(gameURL){
             console.log(data);
         }
     });
+    endTurn(gameURL);
 }
 
 function endTurn(gameURL){

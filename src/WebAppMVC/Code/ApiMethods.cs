@@ -17,7 +17,7 @@ namespace WebAppMVC.Code
             request.AddParameter(new Parameter("name", playerName, ParameterType.QueryString));
             request.AddParameter(new Parameter("colorID", int.Parse(playerColor), ParameterType.QueryString));
             IRestResponse<PlayerModel> addPlayerResponse = client.Execute<PlayerModel>(request);
-        
+
             return addPlayerResponse.Data;
         }
 
@@ -58,11 +58,7 @@ namespace WebAppMVC.Code
             CookieOptions cookie = new CookieOptions();
             cookie.Expires = DateTime.Now.AddHours(1);
             Response.Cookies.Append("gameid", model.GameId.ToString(), cookie);
-            Response.Cookies.Append("playercolorid", model.PlayerColor, cookie);
-            Response.Cookies.Append("playerid", model.PlayerId.ToString(), cookie);
-            Response.Cookies.Append("playername", model.PlayerName, cookie);
         }
-
 
     }
 }
