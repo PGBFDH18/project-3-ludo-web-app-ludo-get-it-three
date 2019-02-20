@@ -27,9 +27,24 @@ namespace WebAppMVC.Controllers
             // Create game
             model.GameId = ApiMethods.CreateGame(client);
 
-            // Add player that created game
-            PlayerModel addedPlayer = ApiMethods.AddPlayer(model.GameId, model.PlayerName, model.PlayerColor, client);
-            model.PlayerId = addedPlayer.PlayerId;
+
+            // Add all players that aren't null to the game.
+            if(model.Player1Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "0", client);
+            }
+            if (model.Player2Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "1", client);
+            }
+            if (model.Player3Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "2", client);
+            }
+            if (model.Player4Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "3", client);
+            }
 
             // Set cookies
             ApiMethods.AssignPlayerCookies(model, Response);
@@ -91,17 +106,17 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
-        public IActionResult SelectGame(CreateGameModel model)
-        {
-            // Add the joining player to the game
-            PlayerModel addedPlayer = ApiMethods.AddPlayer(model.GameId, model.PlayerName, model.PlayerColor, client);
-            model.PlayerId = addedPlayer.PlayerId;
+        //public IActionResult SelectGame(CreateGameModel model)
+        //{
+        //    // Add the joining player to the game
+        //    PlayerModel addedPlayer = ApiMethods.AddPlayer(model.GameId, model.PlayerName, model.PlayerColor, client);
+        //    model.PlayerId = addedPlayer.PlayerId;
 
-            // Set cookies
-            ApiMethods.AssignPlayerCookies(model, Response);
+        //    // Set cookies
+        //    ApiMethods.AssignPlayerCookies(model, Response);
 
-            return RedirectToAction("Lobby");
-        }
+        //    return RedirectToAction("Lobby");
+        //}
 
         public IActionResult StartGame()
         {

@@ -24,36 +24,25 @@
 
         <form asp-action="CreateGame" asp-controller="Ludo">
             <div>
-                <label asp-for="Player1Name"></label>
+                <label asp-for="Player1Color"></label>
+                <label>Player 1</label>
                 <input class="search rounded-pill" asp-for="Player1Name" type="text" placeholder="Please enter your name" />
             </div>
             <div>
-                <label asp-for="Player1Color"></label>
-                <select asp-for="Player1Color"></select>
-            </div>
-            <div>
+                @* this might be the place to add icons for each player.*@
                 <label asp-for="Player2Name"></label>
+                <label>Player 2</label>
                 <input class="search rounded-pill" asp-for="Player2Name" type="text" placeholder="Please enter your name" />
             </div>
             <div>
-                <label asp-for="Player2Color"></label>
-                <select asp-for="Player2Color"></select>
-            </div>
-            <div>
                 <label asp-for="Player3Name"></label>
+                <label>Player 3</label>
                 <input class="search rounded-pill" asp-for="Player3Name" type="text" placeholder="Please enter your name" />
             </div>
             <div>
-                <label asp-for="Player3Color"></label>
-                <select asp-for="Player3Color"></select>
-            </div>
-            <div>
                 <label asp-for="Player4Name"></label>
+                <label>Player 4</label>
                 <input class="search rounded-pill" asp-for="Player4Name" type="text" placeholder="Please enter your name" />
-            </div>
-            <div>
-                <label asp-for="Player4Color"></label>
-                <select asp-for="Player4Color"></select>
             </div>
             <input class="btn btn-primary rounded-pill" type="submit" value="New Game" />
         </form>
