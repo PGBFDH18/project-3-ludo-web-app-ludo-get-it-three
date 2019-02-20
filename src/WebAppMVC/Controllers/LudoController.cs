@@ -35,15 +35,15 @@ namespace WebAppMVC.Controllers
             }
             if (model.Player2Name != null)
             {
-                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "1", client);
+                ApiMethods.AddPlayer(model.GameId, model.Player2Name, "1", client);
             }
             if (model.Player3Name != null)
             {
-                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "2", client);
+                ApiMethods.AddPlayer(model.GameId, model.Player3Name, "2", client);
             }
             if (model.Player4Name != null)
             {
-                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "3", client);
+                ApiMethods.AddPlayer(model.GameId, model.Player4Name, "3", client);
             }
 
             // Set cookies
