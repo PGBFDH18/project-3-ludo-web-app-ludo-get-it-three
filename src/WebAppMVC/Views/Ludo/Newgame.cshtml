@@ -24,17 +24,36 @@
 
         <form asp-action="CreateGame" asp-controller="Ludo">
             <div>
-                <label asp-for="PlayerName"></label>
-                <input class="search rounded-pill" asp-for="PlayerName" type="text" placeholder="Please enter your name" />
+                <label asp-for="Player1Name"></label>
+                <input class="search rounded-pill" asp-for="Player1Name" type="text" placeholder="Please enter your name" />
             </div>
             <div>
-                <label asp-for="PlayerColor"></label>
-                <select asp-for="PlayerColor">
-                    <option value="0">Red</option>
-                    <option value="1">Green</option>
-                    <option value="2">Blue</option>
-                    <option value="3">Yellow</option>
-                </select>
+                <label asp-for="Player1Color"></label>
+                <select asp-for="Player1Color"></select>
+            </div>
+            <div>
+                <label asp-for="Player2Name"></label>
+                <input class="search rounded-pill" asp-for="Player2Name" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+                <label asp-for="Player2Color"></label>
+                <select asp-for="Player2Color"></select>
+            </div>
+            <div>
+                <label asp-for="Player3Name"></label>
+                <input class="search rounded-pill" asp-for="Player3Name" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+                <label asp-for="Player3Color"></label>
+                <select asp-for="Player3Color"></select>
+            </div>
+            <div>
+                <label asp-for="Player4Name"></label>
+                <input class="search rounded-pill" asp-for="Player4Name" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+                <label asp-for="Player4Color"></label>
+                <select asp-for="Player4Color"></select>
             </div>
             <input class="btn btn-primary rounded-pill" type="submit" value="New Game" />
         </form>
