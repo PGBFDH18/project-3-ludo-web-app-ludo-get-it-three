@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebAppMVC.Models;
 using RestSharp;
+using Microsoft.AspNetCore.SignalR;
+using WebAppMVC.Code;
 
 namespace WebAppMVC
 {
@@ -42,6 +44,12 @@ namespace WebAppMVC
             app.UseCookiePolicy();
             app.UseSession();
 
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -64,6 +72,7 @@ namespace WebAppMVC
             services.AddTransient<IRestClient, RestClient>();
             services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSignalR();
         }
     }
 }

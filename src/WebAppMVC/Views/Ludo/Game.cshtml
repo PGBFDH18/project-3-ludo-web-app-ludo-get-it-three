@@ -272,7 +272,7 @@
 
             <h4 id="showID" style="display:none;"></h4>
 
-            <p id="getRollNumber"></p>
+            <p1 id="getRollNumber"></p1>
             <p id="getRollNumber2"></p>
         </div>
     </div>
@@ -281,6 +281,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="/api/script.js"></script>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
 
 <script>
 
@@ -288,7 +289,7 @@
     var elements = document.cookie.split(';');
     var foo = elements.filter(x => x.includes('gameid')).toString();
     var tmp = foo.split('=');
-    var gameID = tmp[1];
+    const gameID = tmp[1];
 
     document.getElementById("showID").innerHTML = gameID;
 

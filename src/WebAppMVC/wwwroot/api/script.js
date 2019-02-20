@@ -1,6 +1,6 @@
 var localURL = "https://ludogame.azurewebsites.net/api/ludo/";
 var board = document.getElementById('boardDiv');
-var rField = document.getElementById('rightField');
+var rField = document.getElementById('rightField').getElementsByTagName('p1');
 var newDiv = document.getElementById('newDiv');
 var message = document.getElementById('errorMessage');
 var gameStarted = document.getElementById("showCode");
@@ -14,7 +14,6 @@ var diceValue = null;
 var pieceValue = null;
 var oldPosition = null;
 var newPosition = null;
-
 
 function joinGame() {
     str = document.getElementById("gamecode").value
@@ -137,11 +136,12 @@ function rollDice(gameURL) {
     //getPosition(gameURL);
     var result = null;
     $.ajax({
+        dataType: "json",
         type: "GET",
         async: false,
         url: localURL + gameURL + "/rolldice",
-        dataType: "json",
-        success: function(data){
+        success: function (data) {
+            alert("success");
             result = data;
         }
     });
@@ -210,7 +210,6 @@ function movePiece(gameURL){
         url: localURL + gameURL + "/movepiece?" + "pieceId=" + pieceValue + "&numberOfFields=" + diceValue,
         dataType: "json",
         success: function(data){
-            console.log(data);
         }
     });
 }
