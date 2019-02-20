@@ -50,10 +50,11 @@ function joinGame() {
         xmlhttp.send();
     }
 
-}
+}  
 
 function rollDice(gameURL) {
     //getPosition(gameURL);
+    alert(gameURL);
     var result = null;
     $.ajax({
         dataType: "json",
@@ -67,7 +68,7 @@ function rollDice(gameURL) {
     });
     diceValue = result;
     rollNumber.textContent = "You rolled: " + result;
-    return rField.appendChild(rollNumber);
+    return board.appendChild(rollNumber);
 }
 
 function startGame(gameURL) {
