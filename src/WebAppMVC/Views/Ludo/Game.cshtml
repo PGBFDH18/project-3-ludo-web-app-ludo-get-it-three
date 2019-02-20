@@ -1,7 +1,13 @@
-﻿ @model WebAppMVC.Models.GameModel
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Html;
+@using Microsoft.AspNetCore.HttpOverrides;
+@using Microsoft.AspNetCore.Mvc;
+
+@model WebAppMVC.Models.GameModel
 @{
     ViewData["Title"] = "Game";
     Layout = "_HomeLayout";
+
 }
 
 <html>
@@ -20,7 +26,7 @@
         <div class="bg-circle-3 bg-circle"></div>
         <div class="bg-circle-4 bg-circle"></div>
     </header>
-
+    
     <div id="boardDiv" class="p-5">
         <div class="grid-container">
             <div class="C41">
@@ -261,27 +267,42 @@
                 </div>
             </div>
         </div>
+        <h1>@Model.players[Model.currentPlayerId].Name</h1>
+
         <button onclick="getID(), rollDice(codeInHtml)">Roll Die</button>
         <button onclick="getID(), getPosition(codeInHtml)">Get position</button>
 
-        @*<div class="currentPlayer">@Model.players.First(p => p.PlayerId == Model.currentPlayerId).Name</div>*@
-
+        <h4 id="showID"></h4>
 
         <p id="getRollNumber"></p>
         <p id="getRollNumber2"></p>
-        <h4 id="showID"></h4>
+    </div>
+    <div>
+        <form asp-action="rollDice">
+            <input type="submit" />
+        </form>
+        <form asp-action="movePiece">
+            <input type="submit" asp-for="pieceId" value="0" />
+            <input type="submit" asp-for="pieceId" value="1" />
+            <input type="submit" asp-for="pieceId" value="2" />
+            <input type="submit" asp-for="pieceId" value="3" />
+        </form>
+    </div>
+    <div>
+        <label>
+            Dice value: @Model.diceValue;
+        </label>
     </div>
 
 </body>
 </html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="~/api/script.js"></script>
-
+<script src="/api/script.js"></script>
 
 <script>
 
-    @* GET GAMEID *@
+    @*GET GAMEID*@
     var elements = document.cookie.split(';');
     var foo = elements.filter(x => x.includes('gameid')).toString();
     var tmp = foo.split('=');
@@ -293,8 +314,8 @@
     var showJoinBox = document.getElementById("showCode");
     var showNewGameBox = document.getElementById("showPlayers");
     function getID(){
-        codeInHtml = document.getElementById("showID").innerHTML;
-        return codeInHtml;
+      codeInHtml = document.getElementById("showID").innerHTML;
+      return codeInHtml;
     }
 
 </script>

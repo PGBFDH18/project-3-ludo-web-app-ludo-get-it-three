@@ -133,6 +133,7 @@ function movePiece(gameURL){
         success: function(data){
         }
     });
+    endTurn(gameURL);
 }
 
 function endTurn(gameURL){

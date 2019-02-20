@@ -14,5 +14,6 @@ namespace WebAppMVC.Models
 
         public int diceValue { get; set; }
         public MovePiece movePiece { get; set; }
+        public int pieceId { get; set; }
     }
 }

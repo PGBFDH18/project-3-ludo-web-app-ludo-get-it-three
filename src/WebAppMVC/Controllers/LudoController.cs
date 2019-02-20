@@ -22,61 +22,28 @@ namespace WebAppMVC.Controllers
             client.BaseUrl = new Uri("https://ludogame.azurewebsites.net");
         }
 
-        public IActionResult CreateGame(CreateGameModel model)
-        {
-            // Create game
-            model.GameId = ApiMethods.CreateGame(client);
-
-
-            // Add all players that aren't null to the game.
-            if(model.Player1Name != null)
-            {
-                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "0", client);
-            }
-            if (model.Player2Name != null)
-            {
-                ApiMethods.AddPlayer(model.GameId, model.Player2Name, "1", client);
-            }
-            if (model.Player3Name != null)
-            {
-                ApiMethods.AddPlayer(model.GameId, model.Player3Name, "2", client);
-            }
-            if (model.Player4Name != null)
-            {
-                ApiMethods.AddPlayer(model.GameId, model.Player4Name, "3", client);
-            }
-
-            // Set cookies
-            ApiMethods.AssignPlayerCookies(model, Response);
-
-            return RedirectToAction("Lobby");
-        }
-
-        public IActionResult Game()
-        {
-            if(Request.Cookies["gameid"].ToString() == null)
-            {
-                RedirectToAction("newgame");
-            }
-
-            Guid gameId = Guid.Parse(Request.Cookies["gameid"].ToString());
-            GameModel game = ApiMethods.GetSpecificGame(gameId, client);
-
-            return View(game);
-        }
-
         public IActionResult Home()
+        {
+            return View();
+        }
+
+        public IActionResult NewGame()
         {
             return View();
         }
 
         public async Task<IActionResult> JoinGame()
         {
-            var response = new RestRequest("api/ludo/getallgames", Method.GET);
-            var restResponse = await client.ExecuteTaskAsync(response);
-            var allGames = WebAppMVC.Models.Game.FromJson(restResponse.Content);
-            GameList output = new GameList() { AllGames = allGames };
-            ViewBag.Games = output.AllGames;
+            //var response = new RestRequest("api/ludo/getallgames", Method.GET);
+            //var restResponse = await client.ExecuteTaskAsync(response);
+            //var allGames = Game.FromJson(restResponse.Content);
+            //GameList output = new GameList() { AllGames = allGames };
+
+            return View(/*output*/);
+        }
+
+        public IActionResult Rules()
+        {
             return View();
         }
 
@@ -101,30 +68,91 @@ namespace WebAppMVC.Controllers
             return View(model);
         }
 
-        public IActionResult NewGame()
+        public IActionResult Game()
         {
-            return View();
+            Guid gameId = Guid.Parse(Request.Cookies["gameid"].ToString());
+            GameModel game = ApiMethods.GetSpecificGame(gameId, client);
+            if(Request.Cookies["lastdicevalue"] != null)
+            {
+                game.diceValue = int.Parse(Request.Cookies["lastdicevalue"]);
+            }
+
+            return View(game);
         }
 
-        public IActionResult Rules()
+        public IActionResult CreateGame(CreateGameModel model)
         {
-            return View();
+            // Create game
+            model.GameId = ApiMethods.CreateGame(client);
+
+            // Add all players that aren't null to the game.
+            if (model.Player1Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player1Name, "0", client);
+            }
+            if (model.Player2Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player2Name, "1", client);
+            }
+            if (model.Player3Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player3Name, "2", client);
+            }
+            if (model.Player4Name != null)
+            {
+                ApiMethods.AddPlayer(model.GameId, model.Player4Name, "3", client);
+            }
+
+            // Set cookies
+            ApiMethods.AssignPlayerCookies(model, Response);
+
+            return RedirectToAction("Lobby");
         }
+
+        //public IActionResult SelectGame(CreateGameModel model)
+        //{
+        //    // Add the joining player to the game
+        //    PlayerModel addedPlayer = ApiMethods.AddPlayer(model.GameId, model.PlayerName, model.PlayerColor, client);
+        //    model.PlayerId = addedPlayer.PlayerId;
+
+        //    // Set cookies
+        //    ApiMethods.AssignPlayerCookies(model, Response);
+
+        //    return RedirectToAction("Lobby");
+        //}
 
         public IActionResult StartGame()
         {
             Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
             bool startGameSuccess = ApiMethods.StartGame(gameId, client);
 
-            if (startGameSuccess)
+            if(startGameSuccess)
             {
                 return RedirectToAction("Game");
             }
             else
             {
                 ViewBag.errorMessage = "Couldn't start game.";
-                return View("Lobby", new PlayerModelContainer { gameId = gameId, Players = ApiMethods.GetAllPlayers(gameId, client) });
+                return View("Lobby", new PlayerModelContainer { gameId = gameId ,Players = ApiMethods.GetAllPlayers(gameId, client)});
             }
+        }
+
+        public IActionResult RollDice(GameModel model)
+        {
+
+            Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
+            CookieOptions cookie = new CookieOptions();
+            cookie.Expires = DateTime.Now.AddHours(1);
+            Response.Cookies.Append("lastdicevalue", ApiMethods.RollDice(gameId, client).ToString(), cookie);
+
+            return RedirectToAction("game");
+        }
+
+        public IActionResult MovePiece(GameModel model)
+        {
+            Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
+            ApiMethods.MovePiece(gameId, model.pieceId, int.Parse(Request.Cookies["lastdicevalue"]), client);
+            return RedirectToAction("game");
         }
     }
 }
