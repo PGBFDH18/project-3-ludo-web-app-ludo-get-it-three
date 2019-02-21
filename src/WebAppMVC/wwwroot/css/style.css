@@ -342,11 +342,11 @@ header.masthead .bg-circle-4 {
 
 .W33 { grid-area: W33; background-color: lightblue; }
 
-.W41 { grid-area: W41; background-color: lightyellow; }
+.W41 { grid-area: W41; background-color: RGBA(211,214,31,0.6); }
 
-.W42 { grid-area: W42; background-color: lightyellow; }
+.W42 { grid-area: W42; background-color: RGBA(211,214,31,0.6); }
 
-.W43 { grid-area: W43; background-color: lightyellow; }
+.W43 { grid-area: W43; background-color: RGBA(211,214,31,0.6); }
 
 .C21 { grid-area: C21;  }
 
