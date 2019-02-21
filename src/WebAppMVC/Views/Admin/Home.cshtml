@@ -1,0 +1,33 @@
+﻿@model WebAppMVC.Models.AdminLoginModel
+@{
+    ViewData["Title"] = "AdminLogin";
+    Layout = "_AdminLayout";
+}
+
+<head>
+    <title>Admin Login</title>
+</head>
+<body>
+
+    <div class="text-center p-5">
+
+        <form asp-action="Home" asp-controller="Admin">
+            <div>
+                <label asp-for="Username"></label>
+                <input asp-for="Username" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="text" placeholder="Please enter your name" />
+            </div>
+            @if (ViewBag.ErrorMessage != "")
+            {
+                <div>
+                    <label> @ViewBag.ErrorMessage</label>
+                </div>
+            }
+
+            <input id="adminLoginButton" type="submit" class="button" value="Sign In" />
+        </form>
+    </div>
+</body>

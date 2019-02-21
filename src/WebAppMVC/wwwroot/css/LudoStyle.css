@@ -1,0 +1,170 @@
+﻿html {
+    background-color: lightgray;
+}
+
+.currentPlayer {
+    font-size: 300%;
+}
+
+.dice {
+    width: 56px;
+    height: 56px;
+    background-color: antiquewhite;
+    border: 2px solid black;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: 150px;
+    left: 50px;
+}
+
+.diceDot {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50px;
+    position: absolute;
+}
+
+    .diceDot#center {
+        top: 23px;
+        left: 23px;
+    }
+
+    .diceDot#leftUpper {
+        top: 3px;
+        left: 5px;
+    }
+
+    .diceDot#leftMiddel {
+        top: 23px;
+        left: 5px;
+    }
+
+    .diceDot#leftLower {
+        top: 43px;
+        left: 5px;
+    }
+
+    .diceDot#rightUpper {
+        top: 3px;
+        left: 41px;
+    }
+
+    .diceDot#rightMiddel {
+        top: 23px;
+        left: 41px;
+    }
+
+    .diceDot#rightLower {
+        top: 43px;
+        left: 41px;
+    }
+
+.gameInfo {
+    width: 100px;
+    height: 50px;
+    top: 20px;
+    left: 920px;
+    position: absolute;
+}
+
+.goal {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    left: 360;
+    top: 360;
+    background-color: cyan;
+}
+
+.field {
+    width: 58px;
+    height: 58px;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+}
+
+.board {
+    top: 0px;
+    left: 0px;
+    width: 860px;
+    height: 860px;
+    padding: 20px;
+    background-color: antiquewhite;
+    border: 2px solid black;
+    position: absolute;
+}
+
+.brick {
+    margin: 9px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.start {
+    width: 160px;
+    height: 160px;
+    padding: 100px;
+    position: absolute;
+}
+
+    .start .field {
+        margin: 10px;
+    }
+
+.wing {
+    width: 360px;
+    height: 180px;
+    position: absolute;
+}
+
+#leftWing {
+    top: 360px;
+    left: 0px;
+}
+
+#rightWing {
+    top: 360px;
+    left: 540px;
+    transform: rotate(180deg);
+}
+
+#topWing {
+    top: 90px;
+    left: 270px;
+    transform: rotate(90deg);
+}
+
+#bottomWing {
+    top: 630px;
+    left: 270px;
+    transform: rotate(270deg);
+}
+
+.start.player1 {
+    left: 0px;
+    top: 540px;
+}
+
+.start.player2 {
+    left: 0px;
+    top: 0px;
+}
+
+.start.player3 {
+    left: 540px;
+    top: 540px;
+}
+
+.start.player4 {
+    left: 540px;
+    top: 0px;
+}

@@ -1,0 +1,50 @@
+﻿@model WebAppMVC.Models.PlayerModelContainer
+@{
+    ViewData["Title"] = "Lobby";
+    Layout = "_HomeLayout";
+}
+
+<head>
+    <title>Lobby</title>
+</head>
+<body>
+    <!-- Content -->
+    <header class="masthead p-5 text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <div class="p-5">
+        @if (ViewBag.errorMessage != null)
+        {
+            <p>@ViewBag.errorMessage</p>
+        }
+
+        @if (ViewBag.message != null)
+        {
+            <p>@ViewBag.message</p>
+        }
+        else
+        {
+            <h4>Game ID: @Model.gameId</h4>
+            <h5>Players</h5>
+            foreach (PlayerModel player in Model.Players)
+            {
+                <span class="@player.PlayerColor fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                </span>
+                <label>@player.Name</label>
+            }
+            <form asp-action="StartGame" asp-controller="Ludo">
+                <button class="btn btn-primary rounded-pill mt-3" type="submit">Start Game</button>
+            </form>
+        }
+    </div>
+</body>

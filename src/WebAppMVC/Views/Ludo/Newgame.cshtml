@@ -1,0 +1,61 @@
+﻿@model WebAppMVC.Models.CreateGameModel
+@{
+    ViewData["Title"] = "Newgame";
+    Layout = "_HomeLayout";
+}
+
+<head>
+    <title>New game</title>
+</head>
+<body>
+    <!-- Content -->
+    <header class="masthead p-5 text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <div class="text-center p-5">
+
+        <form asp-action="CreateGame" asp-controller="Ludo">
+            <div>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x player1 Red"></i>
+                    <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                </span>
+                <label asp-for="Player1Name">Player 1</label>
+                <input class="search rounded-pill" asp-for="Player1Name" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x player2 Green"></i>
+                    <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                </span>
+                <label asp-for="Player2Name">Player 2</label>
+                <input class="search rounded-pill" asp-for="Player2Name" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x player3 Blue"></i>
+                    <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                </span>
+                <label asp-for="Player3Name">Player 3</label>
+                <input class="search rounded-pill" asp-for="Player3Name" type="text" placeholder="Please enter your name" />
+            </div>
+            <div>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x player4 Yellow"></i>
+                    <i class="fa fa-chess-pawn fa-stack-1x fa-inverse"></i>
+                </span>
+                <label asp-for="Player4Name">Player 4</label>
+                <input class="search rounded-pill" asp-for="Player4Name" type="text" placeholder="Please enter your name" />
+            </div>
+            <input class="btn btn-primary rounded-pill" type="submit" value="New Game" />
+        </form>
+    </div>
+</body>
