@@ -102,7 +102,7 @@ namespace WebAppMVC.Controllers
         public IActionResult MovePiece(GameModel model)
         {
             Guid gameId = Guid.Parse(Request.Cookies["gameid"]);
-            ApiMethods.MovePiece(gameId, model.pieceId, int.Parse(Request.Cookies["lastdicevalue"]), client);
+            ApiMethods.MovePiece(gameId, (model.pieceId - 1 ), int.Parse(Request.Cookies["lastdicevalue"]), client);
             Response.Cookies.Append("lastdicevalue", "0");
             TempData["rolled"] = "false";
             return RedirectToAction("game");
