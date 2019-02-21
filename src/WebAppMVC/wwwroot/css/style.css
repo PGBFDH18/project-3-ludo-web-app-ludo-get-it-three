@@ -322,31 +322,31 @@ header.masthead .bg-circle-4 {
 
 .B32 { grid-area: B32; background-color: wheat;  }
 
-.W11 { grid-area: W11;  }
+.W11 { grid-area: W11; background-color: lightcoral; }
 
-.W12 { grid-area: W12;  }
+.W12 { grid-area: W12; background-color: lightcoral; }
 
-.W13 { grid-area: W13;  }
+.W13 { grid-area: W13; background-color: lightcoral; }
 
-.WINNER { grid-area: WINNER;  }
+.WINNER { grid-area: WINNER; }
 
-.W21 { grid-area: W21;  }
+.W21 { grid-area: W21; background-color: lightgreen; }
 
-.W22 { grid-area: W22;  }
+.W22 { grid-area: W22; background-color: lightgreen; }
 
-.W23 { grid-area: W23;  }
+.W23 { grid-area: W23; background-color: lightgreen; }
 
-.W31 { grid-area: W31;  }
+.W31 { grid-area: W31; background-color: lightblue; }
 
-.W32 { grid-area: W32;  }
+.W32 { grid-area: W32; background-color: lightblue; }
 
-.W33 { grid-area: W33;  }
+.W33 { grid-area: W33; background-color: lightblue; }
 
-.W41 { grid-area: W41;  }
+.W41 { grid-area: W41; background-color: lightyellow; }
 
-.W42 { grid-area: W42;  }
+.W42 { grid-area: W42; background-color: lightyellow; }
 
-.W43 { grid-area: W43;  }
+.W43 { grid-area: W43; background-color: lightyellow; }
 
 .C21 { grid-area: C21;  }
 
