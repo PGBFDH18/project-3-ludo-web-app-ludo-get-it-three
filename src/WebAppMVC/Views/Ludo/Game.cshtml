@@ -45,20 +45,26 @@
     </div>
 
     <div class="buttons-area">
-        <p style="color:@Model.players[Model.currentPlayerId].PlayerColor.ToString()">Current player: @Model.players[Model.currentPlayerId].Name</p>
+        <p>Spela din tur: @Model.players[Model.currentPlayerId].Name</p>
         <form asp-action="rollDice">
             <input value="Rulla tärningen!" type="submit" />
-            <p>Du slog: @Model.diceValue</p>
+            @if (Model.diceValue != 0)
+            {
+                <p>Du slog: @Model.diceValue</p>
+            }
         </form>
-        <form asp-action="movePiece">
-            <label>Välj vilken pjäs du vill flytta: </label>
-            <div>
-                <input type="submit" asp-for="pieceId" value="0" />
-                <input type="submit" asp-for="pieceId" value="1" />
-                <input type="submit" asp-for="pieceId" value="2" />
-                <input type="submit" asp-for="pieceId" value="3" />
-            </div>
-        </form>
+        @if (Model.diceValue != 0)
+        {
+            <form asp-action="movePiece">
+                <label>Välj vilken pjäs du vill flytta: </label>
+                <div>
+                    <input type="submit" asp-for="pieceId" value="1"/>
+                    <input type="submit" asp-for="pieceId" value="2"/>
+                    <input type="submit" asp-for="pieceId" value="3"/>
+                    <input type="submit" asp-for="pieceId" value="4"/>
+                </div>
+            </form>
+        }
     </div>
 
     <div id="boardDiv" class="p-5">
