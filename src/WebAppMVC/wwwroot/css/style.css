@@ -374,48 +374,31 @@ header.masthead .bg-circle-4 {
 }
 
 .text-representation {
-    width: 350px;
+    width: 360px;
     float: right;
-    border-color: black;
-    border: double;
 }
 
-.text-representation .innerText0{
-    background-color:RGBA(214,31,31,0.6);
+.text-representation .innerText0 {
+    background-color: RGBA(214,31,31,0.6);
+}
+
+.text-representation .innerText1 {
+    background-color: RGBA(67,177,16,0.6);
+}
+
+.text-representation .innerText2 {
+    background-color: RGBA(31,89,214,0.6);
+}
+
+.text-representation .innerText3 {
+    background-color: RGBA(211,214,31,0.6);
+}
+
+.innerText0, .innerText1, .innerText2, .innerText3 {
     align-items: inherit;
     text-align: center;
     float: left;
-    border-color: black;
-    border: inset;
+    border: 1px solid black;
     margin: 4px;
-}
-
-.text-representation .innerText1{
-    background-color:RGBA(67,177,16,0.6);
-    align-items: inherit;
-    text-align: center;
-    float: left;
-    border-color: black;
-    border: inset;
-    margin: 4px;
-}
-
-.text-representation .innerText2{
-    background-color:RGBA(31,89,214,0.6);
-    align-items: inherit;
-    text-align: center;
-    float: left;
-    border-color: black;
-    border: inset;
-    margin: 4px;
-}
-
-.text-representation .innerText3{
-    background-color:RGBA(211,214,31,0.6);
-    align-items: inherit;
-    text-align: center;
-    float: left;
-    border-color: black;
-    border: inset;
-    margin: 4px;
+    width: 47%;
 }
