@@ -374,7 +374,7 @@ header.masthead .bg-circle-4 {
 }
 
 .text-representation {
-    width: 343px;
+    width: 350px;
     float: right;
     border-color: black;
     border: double;
@@ -388,7 +388,6 @@ header.masthead .bg-circle-4 {
     border-color: black;
     border: inset;
     margin: 4px;
-    padding: 10px;
 }
 
 .text-representation .innerText1{
@@ -399,7 +398,6 @@ header.masthead .bg-circle-4 {
     border-color: black;
     border: inset;
     margin: 4px;
-    padding: 10px;
 }
 
 .text-representation .innerText2{
@@ -410,7 +408,6 @@ header.masthead .bg-circle-4 {
     border-color: black;
     border: inset;
     margin: 4px;
-    padding: 10px;
 }
 
 .text-representation .innerText3{
@@ -421,5 +418,4 @@ header.masthead .bg-circle-4 {
     border-color: black;
     border: inset;
     margin: 4px;
-    padding: 10px;
 }

@@ -45,7 +45,7 @@
     </div>
 
     <div class="buttons-area">
-        <p style="color:@Model.players[Model.currentPlayerId].PlayerColor.ToString()">Current player: @Model.players[Model.currentPlayerId].Name</p>
+        <p>Current player: @Model.players[Model.currentPlayerId].Name</p>
         <form asp-action="rollDice">
             <input value="Rulla tärningen!" type="submit" />
             @if (Model.diceValue != 0)
