@@ -19,6 +19,10 @@ namespace WebAppMVC
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>().ConfigureLogging(logging => 
+                {
+                    logging.AddConsole();
+                    logging.AddDebug();
+                });
     }
 }
